@@ -6,4 +6,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Ctrl_Dll">
+      <HintPath>..\..\Css_Ctrl\Ctrl_Dll\bin\Debug\Ctrl_Dll.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

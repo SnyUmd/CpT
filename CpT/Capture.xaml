@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
         mc:Ignorable="d"
-        Title="Capture" Height="450" Width="800">
+        Title="Capture" Height="50" Width="200">
     <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+    
+            <TextBlock Grid.Row="0" Grid.Column="0" 
+                       Margin="10,0,0,0"
+                       Text="X座標"
+                       />
+
+            <TextBlock Grid.Row="0" Grid.Column="1" 
+                       x:Name="TxlB_X"
+                       Text="-----"
+                       />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Margin="10,0,0,0"
+                       Text="Y座標"
+                       />
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                       x:Name="TxlB_Y"
+                       Text="-----"
+                       />
+
+        </Grid>
 
     </Grid>
 </Window>

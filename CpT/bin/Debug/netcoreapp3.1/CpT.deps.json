@@ -7,8 +7,19 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "CpT/1.0.0": {
+        "dependencies": {
+          "Ctrl_Dll": "1.0.0.0"
+        },
         "runtime": {
           "CpT.dll": {}
+        }
+      },
+      "Ctrl_Dll/1.0.0.0": {
+        "runtime": {
+          "Ctrl_Dll.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -16,6 +27,11 @@
   "libraries": {
     "CpT/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ctrl_Dll/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

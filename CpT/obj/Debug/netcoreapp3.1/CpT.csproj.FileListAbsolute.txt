@@ -5,11 +5,9 @@ D:\_git\VS\CpT\CpT\bin\Debug\netcoreapp3.1\CpT.runtimeconfig.dev.json
 D:\_git\VS\CpT\CpT\bin\Debug\netcoreapp3.1\CpT.dll
 D:\_git\VS\CpT\CpT\bin\Debug\netcoreapp3.1\CpT.pdb
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.csprojAssemblyReference.cache
-D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\App.g.cs
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT_MarkupCompile.cache
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT_MarkupCompile.lref
-D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\MainWindow.baml
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.g.resources
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.AssemblyInfoInputs.cache
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.AssemblyInfo.cs
@@ -17,3 +15,10 @@ D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.csproj.CoreCompileInputs.cache
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.dll
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.pdb
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.genruntimeconfig.cache
+D:\_git\VS\CpT\CpT\bin\Debug\netcoreapp3.1\Ctrl_Dll.dll
+D:\_git\VS\CpT\CpT\bin\Debug\netcoreapp3.1\Ctrl_Dll.pdb
+D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\Capture.g.cs
+D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\ScreenLock.g.cs
+D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\Capture.baml
+D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\ScreenLock.baml
+D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.csproj.CopyComplete
