@@ -24,5 +24,10 @@ namespace CpT
         {
             InitializeComponent();
         }
+
+        private void MouseLeftBD(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("");
+        }
     }
 }

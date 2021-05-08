@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
         mc:Ignorable="d"
-        Title="Capture" Height="50" Width="200">
+        WindowStyle="None"
+        Title="Capture" Height="50" Width="200" MouseLeftButtonDown="MouseLeftBD">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
