@@ -4,9 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
+        WindowStartupLocation="CenterScreen"
+        Background="Gray"
+        Opacity="0.3"
         mc:Ignorable="d"
         Title="Capture" Height="50" Width="250"
-        MouseLeftButtonDown="MouseLeftBD" Visibility="Visible" 
+        KeyDown="Key_down"
+        MouseLeftButtonDown="MouseLeftBD" 
+        MouseDown="Mouse_down"
+        MouseUp="Mouse_Up"
+        Visibility="Visible" 
         AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid>
@@ -30,7 +37,7 @@
                        />
 
             <TextBlock Grid.Row="0" Grid.Column="1" 
-                       x:Name="TxlB_X"
+                       x:Name="TxBL_X0"
                        Text="-----"
                        />
 
@@ -39,13 +46,18 @@
                        Text="X1座標"
                        />
 
+            <TextBlock Grid.Row="0" Grid.Column="4" 
+                       x:Name="TxBL_X1"
+                       Text="-----"
+                       />
+
             <TextBlock Grid.Row="1" Grid.Column="0" 
                        Margin="10,0,0,0"
                        Text="Y0座標" Grid.RowSpan="2"
                        />
-            
+
             <TextBlock Grid.Row="1" Grid.Column="1" 
-                       x:Name="TxlB_Y"
+                       x:Name="TxBL_Y0"
                        Text="-----" Grid.RowSpan="2"
                        />
 
@@ -54,12 +66,10 @@
                        Text="Y1座標" Grid.RowSpan="2"
                        />
 
-            <TextBlock Grid.Row="1" Grid.Column="  " 
-                       x:Name="TxlB_Y"
+            <TextBlock Grid.Row="1" Grid.Column="4" 
+                       x:Name="TxBL_Y1"
                        Text="-----" Grid.RowSpan="2"
                        />
-
-
 
         </Grid>
 
