@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
         mc:Ignorable="d"
-        WindowStyle="None"
-        Title="Capture" Height="50" Width="200" MouseLeftButtonDown="MouseLeftBD">
+        Title="Capture" Height="50" Width="250"
+        MouseLeftButtonDown="MouseLeftBD" Visibility="Visible" 
+        AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -17,12 +18,15 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-    
+
             <TextBlock Grid.Row="0" Grid.Column="0" 
                        Margin="10,0,0,0"
-                       Text="X座標"
+                       Text="X0座標"
                        />
 
             <TextBlock Grid.Row="0" Grid.Column="1" 
@@ -30,14 +34,32 @@
                        Text="-----"
                        />
 
+            <TextBlock Grid.Row="0" Grid.Column="3" 
+                       Margin="10,0,0,0"
+                       Text="X1座標"
+                       />
+
             <TextBlock Grid.Row="1" Grid.Column="0" 
                        Margin="10,0,0,0"
-                       Text="Y座標"
+                       Text="Y0座標" Grid.RowSpan="2"
                        />
+            
             <TextBlock Grid.Row="1" Grid.Column="1" 
                        x:Name="TxlB_Y"
-                       Text="-----"
+                       Text="-----" Grid.RowSpan="2"
                        />
+
+            <TextBlock Grid.Row="1" Grid.Column="3" 
+                       Margin="10,0,0,0"
+                       Text="Y1座標" Grid.RowSpan="2"
+                       />
+
+            <TextBlock Grid.Row="1" Grid.Column="  " 
+                       x:Name="TxlB_Y"
+                       Text="-----" Grid.RowSpan="2"
+                       />
+
+
 
         </Grid>
 
