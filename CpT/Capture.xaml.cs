@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using Ctrl_Dll;
 
 
@@ -23,6 +22,11 @@ namespace CpT
     /// </summary>
     public partial class Capture : Window
     {
+        //******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        //******************************************************************
         public Capture()
         {
             InitializeComponent();
@@ -30,29 +34,73 @@ namespace CpT
 
             this.Width = common.ScreenX1;
             this.Height = common.ScreenY1;
+
         }
 
+        //******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //******************************************************************
         private void MouseLeftBD(object sender, MouseButtonEventArgs e)
         {
         }
 
+        //******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //******************************************************************
         private void Key_down(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                Application.Current.Shutdown();
-                //this.Close();
+                common.AppClose();
         }
 
+        //******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //******************************************************************
         private void Mouse_down(object sender, MouseButtonEventArgs e)
         {
-            common.CursorX = 
-            MessageBox.Show("Down");
+            Point position = Mouse.GetPosition(this);
+            common.MdownX = position.X;
+            common.MdownY = position.Y;
+            MessageBox.Show($"X = {common.MdownX},  Y = {common.MdownY}");
         }
 
+        //******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //******************************************************************
         private void Mouse_Up(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Up");
+            Point position = Mouse.GetPosition(this);
+            common.MupX = position.X;
+            common.MupY = position.Y;
 
+        }
+
+        //******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //******************************************************************
+        private void deActiv(object sender, EventArgs e)
+        {
+            
         }
     }
 }

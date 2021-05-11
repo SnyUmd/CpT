@@ -14,5 +14,9 @@ namespace CpT
     /// </summary>
     public partial class App : Application
     {
+        private void appDeactiv(object sender, EventArgs e)
+        {
+            if (common.flgIdle) common.AppClose();
+        }
     }
 }

@@ -22,3 +22,4 @@ D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\ScreenLock.g.cs
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\Capture.baml
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\ScreenLock.baml
 D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.csproj.CopyComplete
+D:\_git\VS\CpT\CpT\obj\Debug\netcoreapp3.1\CpT.csproj.ResolveComReference.cache
