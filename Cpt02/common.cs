@@ -3,13 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using System.Drawing;
-using System.Windows.Controls;
-using System.Windows.Interop;
 
-using System.Drawing.Imaging;
-using System.IO;
-using System.Windows.Media.Imaging;
 
 namespace CpT
 {
@@ -36,7 +30,7 @@ namespace CpT
         public static double EndPointY = 0;
 
 
-        public static Point point;
+        public static System.Windows.Point point;
 
        
 
@@ -84,29 +78,25 @@ namespace CpT
 
 
         //******************************************************************
-        public static Image GetCaptureImage(Rectangle rect)
-        {
+        //private static System.Drawing.Image GetCaptureImage(Rectangle rect)
+        //private static System.Drawing.Image GetCaptureImage(int x_start, int x_end, int y_start, int y_end)
+        //{
 
-            // 指定された範囲と同サイズのBitmapを作成する
-            Image img = new Bitmap(
-                            rect.Width,
-                            rect.Height,
-                            Imaging.PixelFormat.Format32bppArgb);
+        //    var rectangle = new Rectangle(x_start, y_start, x_end - x_start, y_end - y_start);
+        //    var bitmap = new Bitmap(rectangle.Width, rectangle.Height);
+        //    var graphics = Graphics.FromImage(bitmap);
+        //    graphics.CopyFromScreen(new System.Drawing.Point(rectangle.X, rectangle.Y), new System.Drawing.Point(0, 0), bitmap.Size);
+        //    // グラフィックスの解放
+        //    graphics.Dispose();
 
-            // Bitmapにデスクトップのイメージを描画する
-            using (Graphics g = Graphics.FromImage(img))
-            {
-                g.CopyFromScreen(
-                    rect.X,
-                    rect.Y,
-                    0,
-                    0,
-                    rect.Size,
-                    CopyPixelOperation.SourceCopy);
-            }
-
-            return img;
-        }
+        //    // 画像の表示
+        //    using (var stream = new MemoryStream())
+        //    {
+        //        bitmap.Save(stream, ImageFormat.Png);
+        //        stream.Seek(0, SeekOrigin.Begin);
+        //        System.Drawing.Image.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+        //    }
+        //}
 
 
         //******************************************************************

@@ -53,7 +53,7 @@ namespace CpT {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CpT;component/screenlock.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CpT;V1.0.0.0;component/screenlock.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ScreenLock.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
