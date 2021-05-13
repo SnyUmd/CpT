@@ -92,11 +92,11 @@ namespace CpT
             this.Hide();
             
 
-            common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
+            //common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
 
-            int widht = (int)common.PointEnd.X - (int)common.PointStart.X;
-            int height = (int)common.PointEnd.Y - (int)common.PointStart.Y;
-            ViewImage VI = new ViewImage(common.Bpm);
+            //int widht = (int)common.PointEnd.X - (int)common.PointStart.X;
+            //int height = (int)common.PointEnd.Y - (int)common.PointStart.Y;
+            ViewImage VI = new ViewImage(common.PointStart, common.PointEnd);
             VI.Show();
 
             

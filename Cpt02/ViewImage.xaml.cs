@@ -24,15 +24,20 @@ namespace CpT
     /// </summary>
     public partial class ViewImage : Window
     {
-        Bitmap bpmImage;
-        public ViewImage(Bitmap bpm)
+        Bitmap bmpImage;
+        public ViewImage(System.Windows.Point p_start, System.Windows.Point p_end)
         {
             InitializeComponent();
             this.Topmost = true;
-            bpmImage = bpm;
-            this.Width = bpm.Width * 1.05;
-            this.Height = bpm.Height + 38;
-            IntPtr hBitmap = bpmImage.GetHbitmap();
+
+
+            common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
+
+            bmpImage = common.Bpm;
+            this.Width = bmpImage.Width;
+            this.Height = bmpImage.Height;
+
+            IntPtr hBitmap = bmpImage.GetHbitmap();
             try
             {
                 img.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
@@ -49,6 +54,17 @@ namespace CpT
         private void close(object sender, EventArgs e)
         {
             common.AppClose();
+        }
+
+        private void mouseL_Bdown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void keyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl) && e.Key == Key.C)
+                ;
         }
     }
 }

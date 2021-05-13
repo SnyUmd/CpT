@@ -55,25 +55,25 @@ namespace CpT
         {
             if (p0.X > p1.X)
             {
-                PointStart.X = p1.X;
-                PointEnd.X = p0.X;
+                PointStart.X = p1.X - 6;
+                PointEnd.X = p0.X - 7;
             }
             else
             {
-                PointStart.X = p0.X;
-                PointEnd.X = p1.X;
+                PointStart.X = p0.X - 7;
+                PointEnd.X = p1.X - 6;
             }
 
             //if (Y0 > Y1)
             if (p0.Y > p1.Y)
             {
-                PointStart.Y = p1.Y;
-                PointEnd.Y = p0.Y;
+                PointStart.Y = p1.Y - 6;
+                PointEnd.Y = p0.Y - 7;
             }
             else
             {
-                PointStart.Y = p0.Y;
-                PointEnd.Y = p1.Y;
+                PointStart.Y = p0.Y - 7;
+                PointEnd.Y = p1.Y - 6;
             }
 
 
@@ -90,8 +90,7 @@ namespace CpT
         //******************************************************************
         public static Bitmap GetBitmap(System.Windows.Point p_start, System.Windows.Point p_end)
         {
-            int width = (int)p_end.X - (int)p_start.X;
-            int height = (int)p_end.Y - (int)p_start.Y;
+
 
             System.Drawing.Point dStartPoint = new System.Drawing.Point(0, 0);
             System.Drawing.Point dEndPoint = new System.Drawing.Point(0, 0);
@@ -99,6 +98,13 @@ namespace CpT
             dStartPoint.Y = (int)p_start.Y;
             dEndPoint.X = (int)dEndPoint.X;
             dEndPoint.Y = (int)dEndPoint.Y;
+
+            //int width = (int)p_end.X - (int)p_start.X;
+            //int height = (int)p_end.Y - (int)p_start.Y;
+
+            int width = (int)p_end.X - (int)p_start.X;
+            int height = (int)p_end.Y - (int)p_start.Y;
+
 
             //Bitmapの作成
             Bitmap bmp = new Bitmap(width, height);

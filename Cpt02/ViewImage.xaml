@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
+        MouseLeftButtonDown="mouseL_Bdown"
+        KeyDown="keyDown"
         Closed="close"
         mc:Ignorable="d"
-        Title="ViewImage" Height="450" Width="800">
+        Title="ViewImage" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Image x:Name="img"/>
     </Grid>
