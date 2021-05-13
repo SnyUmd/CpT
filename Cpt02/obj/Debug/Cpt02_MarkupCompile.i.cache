@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\_git\VS\Cpt_umd\CpT2\Cpt02\obj\Debug\
+D:\_git\VS\CpT\Cpt02\obj\Debug\
 Cpt02
 none
 false
 DEBUG;TRACE
-D:\_git\VS\Cpt_umd\CpT2\Cpt02\App.xaml
-31964414317
+D:\_git\VS\CpT\Cpt02\App.xaml
+21396538183
 
-9-1734168918
-16809507986
-Capture.xaml;MainWindow.xaml;ScreenLock.xaml;
+8-2078692396
+17290901436
+Capture.xaml;ViewImage.xaml;
 
 True
 

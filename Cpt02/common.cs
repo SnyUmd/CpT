@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
-
+//using Point = System.Windows.Point;
 
 namespace CpT
 {
     public static class common
     {
-        public static bool flgIdle = true;
+        public static bool flgImageSet = false;
+        public static bool flgDrug = false;
 
         public static int ScreenX0 = 0;
         public static int ScreenX1 = 0;
@@ -19,19 +22,19 @@ namespace CpT
         public static int CursorX = 0;
         public static int CursorY = 0;
 
-        public static double MdownX = 0;
-        public static double MdownY = 0;
-        public static double MupX = 0;
-        public static double MupY = 0;
+        //public static double MdownX = 0;
+        //public static double MdownY = 0;
+        //public static double MupX = 0;
+        //public static double MupY = 0;
 
-        public static double StartPointX = 0;
-        public static double StartPointY = 0;
-        public static double EndPointX = 0;
-        public static double EndPointY = 0;
+        public static System.Windows.Point Pdown, Pup;
 
+        public static System.Windows.Point PointStart = new System.Windows.Point(0, 0);
+        public static System.Windows.Point PointEnd = new System.Windows.Point(0, 0);
 
         public static System.Windows.Point point;
 
+        public static Bitmap Bpm;
        
 
         //******************************************************************
@@ -43,60 +46,73 @@ namespace CpT
         //******************************************************************
         public static void AppClose()
         {
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
 
         }
 
-        public static void PointSet(double X0, double X1, double Y0, double Y1)
+        //public static void PointSet(double X0, double X1, double Y0, double Y1)
+        public static void PointSet(System.Windows.Point p0, System.Windows.Point p1)
         {
-            if (X0 > X1)
+            if (p0.X > p1.X)
             {
-                StartPointX = X1;
-                EndPointX = X0;
+                PointStart.X = p1.X;
+                PointEnd.X = p0.X;
             }
             else
             {
-                StartPointX = X0;
-                EndPointX = X1;
+                PointStart.X = p0.X;
+                PointEnd.X = p1.X;
             }
 
-            if (Y0 > Y1)
+            //if (Y0 > Y1)
+            if (p0.Y > p1.Y)
             {
-                StartPointY = Y1;
-                EndPointY = Y0;
+                PointStart.Y = p1.Y;
+                PointEnd.Y = p0.Y;
             }
             else
             {
-                StartPointY = Y0;
-                EndPointY = Y1;
+                PointStart.Y = p0.Y;
+                PointEnd.Y = p1.Y;
             }
 
 
         }
 
-
+        //******************************************************************
+        public static void FlgReset()
+        {
+            flgImageSet = false;
+            flgDrug = false;
+        }
 
 
         //******************************************************************
-        //private static System.Drawing.Image GetCaptureImage(Rectangle rect)
-        //private static System.Drawing.Image GetCaptureImage(int x_start, int x_end, int y_start, int y_end)
-        //{
+        public static Bitmap GetBitmap(System.Windows.Point p_start, System.Windows.Point p_end)
+        {
+            int width = (int)p_end.X - (int)p_start.X;
+            int height = (int)p_end.Y - (int)p_start.Y;
 
-        //    var rectangle = new Rectangle(x_start, y_start, x_end - x_start, y_end - y_start);
-        //    var bitmap = new Bitmap(rectangle.Width, rectangle.Height);
-        //    var graphics = Graphics.FromImage(bitmap);
-        //    graphics.CopyFromScreen(new System.Drawing.Point(rectangle.X, rectangle.Y), new System.Drawing.Point(0, 0), bitmap.Size);
-        //    // グラフィックスの解放
-        //    graphics.Dispose();
+            System.Drawing.Point dStartPoint = new System.Drawing.Point(0, 0);
+            System.Drawing.Point dEndPoint = new System.Drawing.Point(0, 0);
+            dStartPoint.X = (int)p_start.X;
+            dStartPoint.Y = (int)p_start.Y;
+            dEndPoint.X = (int)dEndPoint.X;
+            dEndPoint.Y = (int)dEndPoint.Y;
 
-        //    // 画像の表示
-        //    using (var stream = new MemoryStream())
-        //    {
-        //        bitmap.Save(stream, ImageFormat.Png);
-        //        stream.Seek(0, SeekOrigin.Begin);
-        //        System.Drawing.Image.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-        //    }
-        //}
+            //Bitmapの作成
+            Bitmap bmp = new Bitmap(width, height);
+            //Graphicsの作成
+            Graphics g = Graphics.FromImage(bmp);
+            //画面全体をコピーする
+            g.CopyFromScreen(dStartPoint, dEndPoint, bmp.Size);
+            //解放
+            g.Dispose();
+
+            //表示
+            return bmp;
+        }
+        
 
 
         //******************************************************************

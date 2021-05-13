@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//using System.Windows.Forms;
 using Ctrl_Dll;
 
 
@@ -22,6 +23,8 @@ namespace CpT
     /// </summary>
     public partial class Capture : Window
     {
+
+
         //******************************************************************
         /// <summary>
         /// 
@@ -35,7 +38,7 @@ namespace CpT
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
 
-            
+
         }
 
         //******************************************************************
@@ -71,10 +74,7 @@ namespace CpT
         //******************************************************************
         private void Mouse_down(object sender, MouseButtonEventArgs e)
         {
-            Point position = Mouse.GetPosition(this);
-            common.MdownX = position.X;
-            common.MdownY = position.Y;
-            //MessageBox.Show($"X = {common.MdownX},  Y = {common.MdownY}");
+            common.Pdown = Mouse.GetPosition(this);
         }
 
         //******************************************************************
@@ -86,15 +86,25 @@ namespace CpT
         //******************************************************************
         private void Mouse_Up(object sender, MouseButtonEventArgs e)
         {
-            Point position = Mouse.GetPosition(this);
-            common.MupX = position.X;
-            common.MupY = position.Y;
+            common.Pup = Mouse.GetPosition(this);
+            common.PointSet(common.Pdown, common.Pup);
+            common.flgImageSet = true;
+            this.Hide();
+            
 
-            common.flgIdle = false;
+            common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
 
-            common.PointSet(common.MdownX, common.MupX, common.MdownY, common.MupY);
+            int widht = (int)common.PointEnd.X - (int)common.PointStart.X;
+            int height = (int)common.PointEnd.Y - (int)common.PointStart.Y;
+            ViewImage VI = new ViewImage(common.Bpm);
+            VI.Show();
 
-            MessageBox.Show($"Start : {common.StartPointX},{common.StartPointY}  End : {common.EndPointX}, {common.EndPointY}");
+            
+            //PictureBox pb = new PictureBox();
+            //pb.Image = common.Bpm;
+
+            //System.Windows.Clipboard.SetImage(pb.Image);
+            //MessageBox.Show($"Start : {common.PointStart.X},{common.PointStart.Y}  End : {common.PointEnd.X}, {common.PointEnd.Y}");
         }
 
         //******************************************************************
@@ -106,7 +116,7 @@ namespace CpT
         //******************************************************************
         private void deActiv(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
