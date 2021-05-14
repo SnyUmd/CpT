@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+//using System.Windows.Forms;
 
 using System.IO;
 
@@ -19,11 +19,14 @@ using System.Drawing.Imaging;
 
 namespace CpT
 {
+
     /// <summary>
     /// Window1.xaml の相互作用ロジック
     /// </summary>
     public partial class ViewImage : Window
     {
+        bool flgCtrl = false;
+
         Bitmap bmpImage;
         //******************************************************************
         public ViewImage(System.Windows.Point p_start, System.Windows.Point p_end)
@@ -38,25 +41,10 @@ namespace CpT
             this.Width = bmpImage.Width;
             this.Height = bmpImage.Height;
 
-
             common.SetImgCtrl(bmpImage, img);
 
-            //IntPtr hBitmap = bmpImage.GetHbitmap();
-            //try
-            //{
-            //    img.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-            //        hBitmap,
-            //        IntPtr.Zero,
-            //        Int32Rect.Empty,
-            //        System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
-            //}
-            //finally
-            //{
-            //}
         }
-
-        //******************************************************************
-        
+                
 
         //******************************************************************
         private void close(object sender, EventArgs e)
@@ -73,8 +61,17 @@ namespace CpT
         //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl) && e.Key == Key.C)
-                ;
+            if (e.Key == Key.Escape)
+                common.AppClose();
+
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+                flgCtrl = true;
+
+            if (flgCtrl && e.Key == Key.C)
+            {
+                Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+                flgCtrl = false;
+            }
         }
 
         //******************************************************************

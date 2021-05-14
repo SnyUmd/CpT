@@ -6,6 +6,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 //using Point = System.Windows.Point;
 
 namespace CpT
@@ -91,17 +93,13 @@ namespace CpT
         //******************************************************************
         public static Bitmap GetBitmap(System.Windows.Point p_start, System.Windows.Point p_end)
         {
-
-
             System.Drawing.Point dStartPoint = new System.Drawing.Point(0, 0);
             System.Drawing.Point dEndPoint = new System.Drawing.Point(0, 0);
+
             dStartPoint.X = (int)p_start.X;
             dStartPoint.Y = (int)p_start.Y;
             dEndPoint.X = (int)dEndPoint.X;
             dEndPoint.Y = (int)dEndPoint.Y;
-
-            //int width = (int)p_end.X - (int)p_start.X;
-            //int height = (int)p_end.Y - (int)p_start.Y;
 
             int width = (int)p_end.X - (int)p_start.X;
             int height = (int)p_end.Y - (int)p_start.Y;
@@ -109,6 +107,7 @@ namespace CpT
 
             //Bitmapの作成
             Bitmap bmp = new Bitmap(width, height);
+
             //Graphicsの作成
             Graphics g = Graphics.FromImage(bmp);
             //画面全体をコピーする
