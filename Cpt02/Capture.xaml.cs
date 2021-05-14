@@ -92,6 +92,16 @@ namespace CpT
             common.Pup = Mouse.GetPosition(this);
             common.PointSet(common.Pdown, common.Pup);
 
+            double differenceX = common.PointEnd.X - common.PointStart.X;
+            double differenceY = common.PointEnd.Y - common.PointStart.Y;
+
+            if (differenceX <= 15 || differenceY <= 15)
+            {
+                dCanvas.Children.Remove(currentRect);
+                common.flgDrug = false;
+                return;
+            }
+
             common.flgImageSet = true;
             common.flgDrug = false;
             this.currentRect = null;
