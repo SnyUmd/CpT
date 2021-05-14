@@ -38,6 +38,12 @@ namespace CpT
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
 
+            for(double i = 1; i < 30; i++)
+            {
+                this.Opacity = i * 0.01;
+                common.DoEvents();
+                System.Threading.Thread.Sleep(3);
+            }
 
         }
 

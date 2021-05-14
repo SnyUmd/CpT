@@ -10,6 +10,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 //using Point = System.Windows.Point;
 
+//using System.Linq;
+//using System.Threading.Tasks;
+//using System.Windows.Data;
+//using System.Windows.Documents;
+//using System.Windows.Navigation;
+//using System.Windows.Shapes;
+using System.Windows.Threading;
+
 namespace CpT
 {
     public static class common
@@ -138,6 +146,19 @@ namespace CpT
             }
 
             return true;
+        }
+
+
+        public static void DoEvents()
+        {
+            DispatcherFrame frame = new DispatcherFrame();
+            var callback = new DispatcherOperationCallback(obj =>
+            {
+                ((DispatcherFrame)obj).Continue = false;
+                return null;
+            });
+            Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, callback, frame);
+            Dispatcher.PushFrame(frame);
         }
 
         //******************************************************************

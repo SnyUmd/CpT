@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CpT"
         WindowStartupLocation="CenterScreen"
         Background="Black"
-        Opacity="0.3"
+        Opacity="0"
         Cursor="Cross"
         mc:Ignorable="d"
         Title="Capture" Height="50" Width="250"
