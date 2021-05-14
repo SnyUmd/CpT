@@ -75,6 +75,5 @@ D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt02.csproj.CoreCompileInputs.cache
 D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt02.csproj.CopyComplete
 D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt02.exe
 D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt02.pdb
-D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt02.csprojAssemblyReference.cache
 D:\_git\VS\CpT\Cpt02\obj\Debug\ViewImage.g.cs
 D:\_git\VS\CpT\Cpt02\obj\Debug\ViewImage.baml

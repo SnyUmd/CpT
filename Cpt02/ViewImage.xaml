@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
         MouseLeftButtonDown="mouseL_Bdown"
+        MouseDoubleClick="MouseDclick"
         KeyDown="keyDown"
         Closed="close"
         mc:Ignorable="d"

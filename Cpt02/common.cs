@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Controls;
 //using Point = System.Windows.Point;
 
 namespace CpT
@@ -118,8 +119,27 @@ namespace CpT
             //表示
             return bmp;
         }
-        
 
+        //******************************************************************
+        public static bool SetImgCtrl(Bitmap bmp, System.Windows.Controls.Image img )
+        {
+            IntPtr hBitmap = bmp.GetHbitmap();
+
+            try
+            {
+                img.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                    hBitmap,
+                    IntPtr.Zero,
+                    Int32Rect.Empty,
+                    System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         //******************************************************************
         public static void AreaChek(double X0, double X1, double Y0, double Y1)

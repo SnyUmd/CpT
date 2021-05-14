@@ -25,6 +25,7 @@ namespace CpT
     public partial class ViewImage : Window
     {
         Bitmap bmpImage;
+        //******************************************************************
         public ViewImage(System.Windows.Point p_start, System.Windows.Point p_end)
         {
             InitializeComponent();
@@ -37,34 +38,49 @@ namespace CpT
             this.Width = bmpImage.Width;
             this.Height = bmpImage.Height;
 
-            IntPtr hBitmap = bmpImage.GetHbitmap();
-            try
-            {
-                img.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                    hBitmap,
-                    IntPtr.Zero,
-                    Int32Rect.Empty,
-                    System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
-            }
-            finally
-            {
-            }
+
+            common.SetImgCtrl(bmpImage, img);
+
+            //IntPtr hBitmap = bmpImage.GetHbitmap();
+            //try
+            //{
+            //    img.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+            //        hBitmap,
+            //        IntPtr.Zero,
+            //        Int32Rect.Empty,
+            //        System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+            //}
+            //finally
+            //{
+            //}
         }
 
+        //******************************************************************
+        
+
+        //******************************************************************
         private void close(object sender, EventArgs e)
         {
             common.AppClose();
         }
 
+        //******************************************************************
         private void mouseL_Bdown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
+        //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl) && e.Key == Key.C)
                 ;
+        }
+
+        //******************************************************************
+        private void MouseDclick(object sender, MouseButtonEventArgs e)
+        {
+            common.AppClose();
         }
     }
 }

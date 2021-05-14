@@ -91,20 +91,9 @@ namespace CpT
             common.flgImageSet = true;
             this.Hide();
             
-
-            //common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
-
-            //int widht = (int)common.PointEnd.X - (int)common.PointStart.X;
-            //int height = (int)common.PointEnd.Y - (int)common.PointStart.Y;
             ViewImage VI = new ViewImage(common.PointStart, common.PointEnd);
             VI.Show();
 
-            
-            //PictureBox pb = new PictureBox();
-            //pb.Image = common.Bpm;
-
-            //System.Windows.Clipboard.SetImage(pb.Image);
-            //MessageBox.Show($"Start : {common.PointStart.X},{common.PointStart.Y}  End : {common.PointEnd.X}, {common.PointEnd.Y}");
         }
 
         //******************************************************************

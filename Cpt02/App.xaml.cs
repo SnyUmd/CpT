@@ -13,6 +13,7 @@ namespace CpT
     /// </summary>
     public partial class App : Application
     {
+        //******************************************************************
         private void appDeactiv(object sender, EventArgs e)
         {
             if (!common.flgImageSet) common.AppClose();

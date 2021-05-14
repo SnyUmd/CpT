@@ -1,0 +1,7 @@
+D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.csprojAssemblyReference.cache
+D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.exe.config
+D:\_git\VS\CpT\Cpt02\obj\Release\Capture.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Release\ViewImage.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Release\App.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02_MarkupCompile.cache
+D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02_MarkupCompile.lref
