@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows;
 using System.Windows.Input;
 
@@ -64,6 +65,16 @@ namespace CpT
                 Clipboard.SetData(DataFormats.Bitmap, bmpImage);
                 flgCtrl = false;
             }
+
+            else if (flgCtrl && e.Key == Key.S)
+            {
+                string strFile = "";
+
+                strFile = common.PngFileSave(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\");
+
+                bmpImage.Save(strFile, ImageFormat.Png);
+                flgCtrl = false;
+            }
         }
 
         //******************************************************************
@@ -71,5 +82,7 @@ namespace CpT
         {
             common.AppClose();
         }
+
+
     }
 }

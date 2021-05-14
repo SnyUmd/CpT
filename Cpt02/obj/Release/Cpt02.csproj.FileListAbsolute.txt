@@ -1,4 +1,3 @@
-D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.csprojAssemblyReference.cache
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.exe.config
 D:\_git\VS\CpT\Cpt02\obj\Release\Capture.g.cs
 D:\_git\VS\CpT\Cpt02\obj\Release\ViewImage.g.cs
@@ -36,5 +35,3 @@ D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.csproj.CoreCompileInputs.cache
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.csproj.CopyComplete
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.exe
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt02.pdb
-D:\_git\VS\CpT\Cpt02\bin\Release\Ctrl_Dll.dll
-D:\_git\VS\CpT\Cpt02\bin\Release\Ctrl_Dll.pdb

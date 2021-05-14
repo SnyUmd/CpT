@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
-using Ctrl_Dll;
 
 
 namespace CpT
@@ -25,12 +25,19 @@ namespace CpT
             InitializeComponent();
 
             //描画先とするImageオブジェクトを作成する
-            cls_Etc.getScreenSize(ref common.ScreenX1, ref common.ScreenY1);
+            getScreenSize(ref common.ScreenX1, ref common.ScreenY1);
 
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
 
             common.ViewWindow(this, true);
+        }
+
+        //******************************************************************
+        public static void getScreenSize(ref int x, ref int y)
+        {
+            x = Screen.PrimaryScreen.Bounds.Width;
+            y = Screen.PrimaryScreen.Bounds.Height;
         }
 
 
@@ -41,7 +48,7 @@ namespace CpT
         /// <param name="sender"></param>
         /// <param name="e"></param>
         //******************************************************************
-        private void Key_down(object sender, KeyEventArgs e)
+        private void Key_down(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
                 common.AppClose();
@@ -99,7 +106,7 @@ namespace CpT
 
 
         //******************************************************************
-        private void CanvasMouseMove(object sender, MouseEventArgs e)
+        private void CanvasMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (!common.flgDrug) return;
 
