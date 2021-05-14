@@ -38,11 +38,16 @@ namespace CpT
             common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
 
             bmpImage = common.Bpm;
-            this.Width = bmpImage.Width;
-            this.Height = bmpImage.Height;
+            int w = bmpImage.Width;
+            int h = bmpImage.Height;
+
+            this.Width = w;
+            this.Height = h;
 
             common.SetImgCtrl(bmpImage, img);
 
+            this.Left = 0;
+            this.Top = 0;
         }
                 
 
@@ -61,7 +66,7 @@ namespace CpT
         //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
+            if (e.Key == Key.Escape || e.Key == Key.Delete || e.Key == Key.Back)
                 common.AppClose();
 
             if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)

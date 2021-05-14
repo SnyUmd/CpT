@@ -24,6 +24,7 @@ namespace CpT
     {
         public static bool flgImageSet = false;
         public static bool flgDrug = false;
+        public static bool flgMoutDown = false;
 
         public static int ScreenX0 = 0;
         public static int ScreenX1 = 0;
@@ -66,25 +67,25 @@ namespace CpT
         {
             if (p0.X > p1.X)
             {
-                PointStart.X = p1.X - 6;
+                PointStart.X = p1.X - 7;
                 PointEnd.X = p0.X - 7;
             }
             else
             {
                 PointStart.X = p0.X - 7;
-                PointEnd.X = p1.X - 6;
+                PointEnd.X = p1.X - 7;
             }
 
             //if (Y0 > Y1)
             if (p0.Y > p1.Y)
             {
-                PointStart.Y = p1.Y - 6;
+                PointStart.Y = p1.Y - 7;
                 PointEnd.Y = p0.Y - 7;
             }
             else
             {
                 PointStart.Y = p0.Y - 7;
-                PointEnd.Y = p1.Y - 6;
+                PointEnd.Y = p1.Y - 7;
             }
 
 
@@ -149,6 +150,7 @@ namespace CpT
         }
 
 
+        //******************************************************************
         public static void DoEvents()
         {
             DispatcherFrame frame = new DispatcherFrame();
@@ -165,6 +167,29 @@ namespace CpT
         public static void AreaChek(double X0, double X1, double Y0, double Y1)
         {
 
+        }
+
+        //******************************************************************
+        public static void ViewWindow(Window win, bool appear)
+        {
+            if(appear)
+            {
+                for (double i = 1; i < 30; i++)
+                {
+                    win.Opacity = i * 0.01;
+                    common.DoEvents();
+                    System.Threading.Thread.Sleep(3);
+                }
+            }
+            else
+            {
+                for (double i = 30; i > 0; i--)
+                {
+                    win.Opacity = i * 0.01;
+                    common.DoEvents();
+                    System.Threading.Thread.Sleep(3);
+                }
+            }
         }
 
     }

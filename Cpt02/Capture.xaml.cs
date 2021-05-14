@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace CpT
     public partial class Capture : Window
     {
 
+        private System.Windows.Shapes.Rectangle currentRect = null;
 
         //******************************************************************
         /// <summary>
@@ -33,30 +35,16 @@ namespace CpT
         public Capture()
         {
             InitializeComponent();
+
+            //描画先とするImageオブジェクトを作成する
             cls_Etc.getScreenSize(ref common.ScreenX1, ref common.ScreenY1);
 
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
 
-            for(double i = 1; i < 30; i++)
-            {
-                this.Opacity = i * 0.01;
-                common.DoEvents();
-                System.Threading.Thread.Sleep(3);
-            }
-
+            common.ViewWindow(this, true);
         }
 
-        //******************************************************************
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //******************************************************************
-        private void MouseLeftBD(object sender, MouseButtonEventArgs e)
-        {
-        }
 
         //******************************************************************
         /// <summary>
@@ -81,6 +69,20 @@ namespace CpT
         private void Mouse_down(object sender, MouseButtonEventArgs e)
         {
             common.Pdown = Mouse.GetPosition(this);
+            common.flgDrug = true;
+
+
+            // 描画オブジェクトの生成
+            this.currentRect = new System.Windows.Shapes.Rectangle
+            {
+                Stroke = System.Windows.Media.Brushes.Green,
+                StrokeThickness = 1
+            };
+            Canvas.SetLeft(this.currentRect, common.Pdown.X);
+            Canvas.SetTop(this.currentRect, common.Pdown.Y);
+
+            // オブジェクトをキャンバスに追加
+            this.dCanvas.Children.Add(this.currentRect);
         }
 
         //******************************************************************
@@ -94,7 +96,12 @@ namespace CpT
         {
             common.Pup = Mouse.GetPosition(this);
             common.PointSet(common.Pdown, common.Pup);
+
             common.flgImageSet = true;
+            common.flgDrug = false;
+            this.currentRect = null;
+
+            common.ViewWindow(this, false);
             this.Hide();
             
             ViewImage VI = new ViewImage(common.PointStart, common.PointEnd);
@@ -102,16 +109,27 @@ namespace CpT
 
         }
 
-        //******************************************************************
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //******************************************************************
-        private void deActiv(object sender, EventArgs e)
-        {
 
+        //******************************************************************
+        private void CanvasMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!common.flgDrug) return;
+
+            System.Windows.Point pMouse = new System.Windows.Point();
+
+            pMouse = Mouse.GetPosition(dCanvas);
+
+
+            double x = Math.Min(pMouse.X, common.Pdown.X);
+            double y = Math.Min(pMouse.Y, common.Pdown.Y);
+            double width = Math.Max(pMouse.X, common.Pdown.X) - x;
+            double height = Math.Max(pMouse.Y, common.Pdown.Y) - y;
+
+            // 描画中オブジェクトの情報を更新
+            this.currentRect.Width = width;
+            this.currentRect.Height = height;
+            Canvas.SetLeft(this.currentRect, x);
+            Canvas.SetTop(this.currentRect, y);
         }
     }
 }
