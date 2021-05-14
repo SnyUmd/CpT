@@ -1,21 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
-//using Point = System.Windows.Point;
-
-//using System.Linq;
-//using System.Threading.Tasks;
-//using System.Windows.Data;
-//using System.Windows.Documents;
-//using System.Windows.Navigation;
-//using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace CpT
