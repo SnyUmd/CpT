@@ -29,8 +29,8 @@ namespace CpT
             int w = bmpImage.Width;
             int h = bmpImage.Height;
 
-            this.Width = w;
-            this.Height = h;
+            this.Width = w + 2;
+            this.Height = h + 2;
 
             common.SetImgCtrl(bmpImage, img);
 
