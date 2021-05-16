@@ -9,6 +9,7 @@
         KeyDown="keyDown"
         Closed="close"
         mc:Ignorable="d"
+        Icon="/image/icon.Png"
         Title="ViewImage" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Image x:Name="img"/>

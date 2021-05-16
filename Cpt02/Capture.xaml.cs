@@ -29,8 +29,8 @@ namespace CpT
 
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
-
             common.ViewWindow(this, true);
+
         }
 
         //******************************************************************

@@ -165,7 +165,7 @@ namespace CpT
                 {
                     win.Opacity = i * 0.01;
                     common.DoEvents();
-                    System.Threading.Thread.Sleep(3);
+                    System.Threading.Thread.Sleep(1);
                 }
             }
             else
@@ -174,7 +174,7 @@ namespace CpT
                 {
                     win.Opacity = i * 0.01;
                     common.DoEvents();
-                    System.Threading.Thread.Sleep(3);
+                    System.Threading.Thread.Sleep(1);
                 }
             }
         }

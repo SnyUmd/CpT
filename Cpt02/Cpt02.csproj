@@ -34,10 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>6b5447b7c42e56bae079afc58ea442e1_xxo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ctrl_Dll, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Css_Ctrl\Ctrl_Dll\bin\Debug\Ctrl_Dll.dll</HintPath>
+      <HintPath>..\..\Css_Ctrl\Ctrl_Dll\bin\Release\Ctrl_Dll.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Imaging, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -107,6 +110,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\icon.Png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\0e5c6cede481e7ff77d65d52d7278977_xxo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\0e5c6cede481e7ff77d65d52d7278977_i144.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="0e5c6cede481e7ff77d65d52d7278977_xxo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\a4a1ee4721c0e189485229b8fb247589_i144.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="6b5447b7c42e56bae079afc58ea442e1_xxo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
