@@ -80,7 +80,8 @@ namespace CpT
         //******************************************************************
         private void MouseDclick(object sender, MouseButtonEventArgs e)
         {
-            common.AppClose();
+            //common.AppClose();
+            this.WindowState = WindowState.Minimized;
         }
 
 

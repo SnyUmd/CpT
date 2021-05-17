@@ -63,7 +63,9 @@ namespace CpT
         //******************************************************************
         private void Mouse_down(object sender, MouseButtonEventArgs e)
         {
-            common.Pdown = Mouse.GetPosition(this);
+            common.Pdown =  Mouse.GetPosition(this);
+            //common.Pdown = this.PointToScreen(Mouse.GetPosition(this));
+
             common.flgDrug = true;
 
 
@@ -90,7 +92,9 @@ namespace CpT
         private void Mouse_Up(object sender, MouseButtonEventArgs e)
         {
             common.Pup = Mouse.GetPosition(this);
-            common.PointSet(common.Pdown, common.Pup);
+            //common.Pup = this.PointToScreen(Mouse.GetPosition(this));
+
+            common.PointSet(this.PointToScreen(common.Pdown), this.PointToScreen(common.Pup));
 
             double differenceX = common.PointEnd.X - common.PointStart.X;
             double differenceY = common.PointEnd.Y - common.PointStart.Y;
@@ -123,6 +127,7 @@ namespace CpT
             System.Windows.Point pMouse = new System.Windows.Point();
 
             pMouse = Mouse.GetPosition(dCanvas);
+            //pMouse = this.PointToScreen(Mouse.GetPosition(dCanvas));
 
 
             double x = Math.Min(pMouse.X, common.Pdown.X);

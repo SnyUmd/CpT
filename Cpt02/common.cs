@@ -54,25 +54,25 @@ namespace CpT
         {
             if (p0.X > p1.X)
             {
-                PointStart.X = p1.X - 7;
-                PointEnd.X = p0.X - 7;
+                PointStart.X = p1.X;
+                PointEnd.X = p0.X;
             }
             else
             {
-                PointStart.X = p0.X - 7;
-                PointEnd.X = p1.X - 7;
+                PointStart.X = p0.X;
+                PointEnd.X = p1.X;
             }
 
             //if (Y0 > Y1)
             if (p0.Y > p1.Y)
             {
-                PointStart.Y = p1.Y - 7;
-                PointEnd.Y = p0.Y - 7;
+                PointStart.Y = p1.Y;
+                PointEnd.Y = p0.Y;
             }
             else
             {
-                PointStart.Y = p0.Y - 7;
-                PointEnd.Y = p1.Y - 7;
+                PointStart.Y = p0.Y;
+                PointEnd.Y = p1.Y;
             }
 
 
