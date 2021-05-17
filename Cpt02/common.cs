@@ -35,6 +35,8 @@ namespace CpT
 
         public static Bitmap Bpm;
 
+        public static bool blScreen = true;
+
 
         //******************************************************************
         public static void AppInit(Window w)
@@ -89,6 +91,9 @@ namespace CpT
         //******************************************************************
         public static Bitmap GetBitmap(System.Windows.Point p_start, System.Windows.Point p_end)
         {
+            int screenState = 0;
+            if (!blScreen) screenState = 1;
+
             System.Drawing.Point dStartPoint = new System.Drawing.Point(0, 0);
             System.Drawing.Point dEndPoint = new System.Drawing.Point(0, 0);
 
@@ -99,18 +104,25 @@ namespace CpT
 
             int width = (int)p_end.X - (int)p_start.X;
             int height = (int)p_end.Y - (int)p_start.Y;
+            
 
+            Rectangle rect = Screen.AllScreens[screenState].Bounds;
+            rect.Width = width;
+            rect.Height = height;
+            rect.X = (int)p_start.X;
+            rect.Y = (int)p_start.Y;
 
             //Bitmapの作成
             Bitmap bmp = new Bitmap(width, height);
 
             //Graphicsの作成
-            Graphics g = Graphics.FromImage(bmp);
-            //画面全体をコピーする
-            g.CopyFromScreen(dStartPoint, dEndPoint, bmp.Size);
-            //解放
-            g.Dispose();
-
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                //画面をコピーする
+                //g.CopyFromScreen(dStartPoint, dEndPoint, bmp.Size);
+                g.CopyFromScreen(rect.X, rect.Y, 0, 0, rect.Size, CopyPixelOperation.SourceCopy);
+            }
+            
             //表示
             return bmp;
         }
