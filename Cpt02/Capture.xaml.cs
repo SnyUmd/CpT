@@ -31,8 +31,6 @@ namespace CpT
             this.Topmost = true;
             common.ViewWindow(this, true);
 
-            common.blScreen = Screen.PrimaryScreen.Primary;
-
         }
 
         //******************************************************************
