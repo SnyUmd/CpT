@@ -71,10 +71,11 @@ namespace CpT
 
             // 描画オブジェクトの生成
             this.currentRect = new System.Windows.Shapes.Rectangle
-            {
-                Stroke = System.Windows.Media.Brushes.Green,
-                StrokeThickness = 1
+            { 
+                Stroke = System.Windows.Media.Brushes.Red,
+                StrokeThickness = 2
             };
+            //this.currentRect.Opacity = 0.75;
             Canvas.SetLeft(this.currentRect, common.Pdown.X);
             Canvas.SetTop(this.currentRect, common.Pdown.Y);
 
@@ -138,6 +139,9 @@ namespace CpT
             // 描画中オブジェクトの情報を更新
             this.currentRect.Width = width;
             this.currentRect.Height = height;
+
+            Canvas cnb = new Canvas();
+            
             Canvas.SetLeft(this.currentRect, x);
             Canvas.SetTop(this.currentRect, y);
         }
