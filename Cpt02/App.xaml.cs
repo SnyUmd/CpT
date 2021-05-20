@@ -11,7 +11,7 @@ namespace CpT
         //******************************************************************
         private void appDeactiv(object sender, EventArgs e)
         {
-            if (!common.flgImageSet) common.AppClose();
+            if (!common.flgImageSet && common.CpT_mode == (int)enm_mode.drag) common.AppClose();
         }
     }
 }

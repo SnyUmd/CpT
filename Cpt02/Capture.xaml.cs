@@ -23,13 +23,14 @@ namespace CpT
         public Capture()
         {
             InitializeComponent();
-
+            common.winDrug = this;
             //描画先とするImageオブジェクトを作成する
             getScreenSize(ref common.ScreenX1, ref common.ScreenY1);
-
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
             common.ViewWindow(this, true);
+
+            common.CpT_mode = (int)enm_mode.drag;
 
         }
 
@@ -52,6 +53,16 @@ namespace CpT
         {
             if (e.Key == Key.Escape)
                 common.AppClose();
+
+            if(!common.flgDrug && e.Key == Key.A)
+            {
+                common.CpT_mode = (int)enm_mode.fream;
+                common.ViewWindow(this, false);
+                this.Visibility = Visibility.Hidden;
+
+                Fream Fr = new Fream();
+                common.ChangeMode(common.CpT_mode, Fr);
+            }
         }
 
         //******************************************************************
@@ -116,7 +127,6 @@ namespace CpT
             
             ViewImage VI = new ViewImage(common.PointStart, common.PointEnd);
             VI.Show();
-
         }
 
 

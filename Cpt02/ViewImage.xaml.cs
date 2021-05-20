@@ -21,9 +21,10 @@ namespace CpT
         {
             InitializeComponent();
             this.Topmost = true;
+            
 
-
-            common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
+            //common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
+            common.Bpm = common.GetBitmap(p_start, p_end);
 
             bmpImage = common.Bpm;
             int w = bmpImage.Width;

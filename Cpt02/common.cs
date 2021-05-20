@@ -7,8 +7,21 @@ using System.Windows.Threading;
 
 namespace CpT
 {
+    enum enm_mode
+    {
+        drag = 0,
+        fream,
+        View
+    }
+
     public static class common
     {
+        public static Window winDrug;
+        public static Window winFream;
+        public static Window winView;
+
+        public static int CpT_mode = 0;
+
         public static bool flgImageSet = false;
         public static bool flgDrug = false;
         public static bool flgMoutDown = false;
@@ -50,6 +63,7 @@ namespace CpT
         }
 
         //public static void PointSet(double X0, double X1, double Y0, double Y1)
+        //******************************************************************
         public static void PointSet(System.Windows.Point p0, System.Windows.Point p1)
         {
             if (p0.X > p1.X)
@@ -161,9 +175,9 @@ namespace CpT
         {
             if (appear)
             {
-                for (double i = 1; i < 30; i++)
+                for (double i = 1; i < 20; i++)
                 {
-                    win.Opacity = i * 0.01;
+                    win.Opacity = i * 0.02;
                     common.DoEvents();
                     System.Threading.Thread.Sleep(1);
                 }
@@ -216,6 +230,21 @@ namespace CpT
                 return sfd.FileName + ".Png";
             else
                 return "";
+        }
+
+        //******************************************************************
+        public static void ChangeMode(int mode_num, Window next_window)
+        {
+            if (mode_num == (int)enm_mode.drag)
+            {
+                next_window.Visibility = Visibility.Visible;
+                ViewWindow(next_window, true);
+            }
+            else
+            {
+                next_window.Show();
+                ViewWindow(next_window, true);
+            }
         }
 
     }
