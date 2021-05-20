@@ -72,6 +72,7 @@ namespace CpT
                 string strFile = "";
 
                 strFile = common.PngFileSave(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\");
+                if (strFile == "") return;
 
                 bmpImage.Save(strFile, ImageFormat.Png);
                 flgCtrl = false;

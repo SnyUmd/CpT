@@ -84,7 +84,7 @@ namespace CpT
             this.currentRect = new System.Windows.Shapes.Rectangle
             { 
                 Stroke = System.Windows.Media.Brushes.Red,
-                StrokeThickness = 2
+                StrokeThickness = 1
             };
             //this.currentRect.Opacity = 0.75;
             Canvas.SetLeft(this.currentRect, common.Pdown.X);
