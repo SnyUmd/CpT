@@ -52,7 +52,7 @@ namespace CpT {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Cpt02;component/fream.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CpT;component/fream.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\Fream.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
