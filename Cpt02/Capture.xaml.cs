@@ -54,14 +54,14 @@ namespace CpT
             if (e.Key == Key.Escape)
                 common.AppClose();
 
-            if(!common.flgDrug && e.Key == Key.A)
+            if(!common.flgDrug && e.Key == Key.F2)
             {
                 common.CpT_mode = (int)enm_mode.fream;
                 common.ViewWindow(this, false);
                 this.Visibility = Visibility.Hidden;
-
+                common.winDrug = this;
                 Fream Fr = new Fream();
-                common.ChangeMode(common.CpT_mode, Fr);
+                common.ChangeMode(common.CpT_mode);
             }
         }
 

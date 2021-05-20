@@ -39,3 +39,4 @@ D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.g.resources
 D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.Properties.Resources.resources
 D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.exe
 D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.pdb
+D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.csprojAssemblyReference.cache

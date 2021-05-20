@@ -24,6 +24,7 @@ namespace CpT
         {
             InitializeComponent();
             this.Topmost = true;
+            common.winFream = this;
         }
 
         //******************************************************************
@@ -36,6 +37,7 @@ namespace CpT
         //******************************************************************
         private void Fr_keyDown(object sender, KeyEventArgs e)
         {
+            //if (common.blModeChange) return;
             if (e.Key == Key.Enter)
             {
                 Point startP = new Point();
@@ -50,6 +52,17 @@ namespace CpT
                 ViewImage Vr = new ViewImage(startP, endP);
                 Vr.Show();
             }
+            else if (e.Key == Key.F1)
+            {
+                //common.blModeChange = true;
+                common.CpT_mode = (int)enm_mode.drag;
+                common.ViewWindow(this, false);
+                common.winFream = this;
+                this.Close();
+                common.ChangeMode(common.CpT_mode);
+            }
+            else if (e.Key == Key.Escape)
+                common.AppClose();
         }
     }
 }

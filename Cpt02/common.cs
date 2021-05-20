@@ -25,6 +25,8 @@ namespace CpT
         public static bool flgImageSet = false;
         public static bool flgDrug = false;
         public static bool flgMoutDown = false;
+        public static bool blModeChange = false;
+
 
         public static int ScreenX0 = 0;
         public static int ScreenX1 = 0;
@@ -203,14 +205,12 @@ namespace CpT
             //はじめに表示されるフォルダを指定する
             sfd.InitialDirectory = str_top_dir;
 
-
             //[ファイルの種類]に表示される選択肢を指定する
             //指定しない（空の文字列）の時は、現在のディレクトリが表示される
-            sfd.Filter = "Pngファイル(*.Png)|*.Png|すべてのファイル(*.*)|*.*";
+            sfd.Filter = "Pngファイル(*.Png)|*.Png";
 
             //[ファイルの種類]ではじめに選択されるものを指定する
-            //2番目の「すべてのファイル」が選択されているようにする
-            sfd.FilterIndex = 2;
+            sfd.FilterIndex = 1;
 
 
             //タイトルを設定する
@@ -227,14 +227,15 @@ namespace CpT
             //ダイアログを表示する
             if (sfd.ShowDialog() == DialogResult.OK)
                 //OKボタンがクリックされたとき、選択されたファイル名を表示する
-                return sfd.FileName + ".Png";
+                return sfd.FileName;
             else
                 return "";
         }
 
         //******************************************************************
-        public static void ChangeMode(int mode_num, Window next_window)
+        public static void ChangeMode(int mode_num)
         {
+            /*
             if (mode_num == (int)enm_mode.drag)
             {
                 next_window.Visibility = Visibility.Visible;
@@ -245,6 +246,30 @@ namespace CpT
                 next_window.Show();
                 ViewWindow(next_window, true);
             }
+            */
+
+            Window win = new Window();
+            switch(mode_num)
+            {
+                
+                case (int)enm_mode.drag:
+                    win = common.winDrug;
+                    common.winDrug.Visibility = Visibility.Visible;
+                    break;
+                case (int)enm_mode.fream:
+                    win = common.winFream;
+                    win.Show();
+                    break;
+                case (int)enm_mode.View:
+                    win = common.winView;
+                    win.Show();
+                    break;
+                default:
+                    return;
+            }
+
+            ViewWindow(win, true);
+
         }
 
     }
