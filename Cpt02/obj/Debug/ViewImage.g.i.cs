@@ -60,7 +60,7 @@ namespace CpT {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Cpt02;component/viewimage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CpT;component/viewimage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\ViewImage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
