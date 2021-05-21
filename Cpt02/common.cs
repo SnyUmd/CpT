@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
@@ -14,8 +15,34 @@ namespace CpT
         View
     }
 
+    enum enmDirNum
+    {
+        Applli,
+        Document,
+        Desktop,
+        Save
+    }
+
+    enum enmConfigValue
+    {
+        left,
+        top,
+        width,
+        heitht,
+        saveDir
+    }
+
     public static class common
     {
+        public static string strConfigFileName = "CpT.config";
+
+        public static Ctrl_Dll.cls_FileCtrl clsFC = new Ctrl_Dll.cls_FileCtrl();
+
+        public static List<string> lst_strDir = new List<string>(4);
+        public static Dictionary<string, int> DicFreamLocation = new Dictionary<string, int>();
+
+        public static string configValue = "";
+
         public static Window winDrug;
         public static Window winFream;
         public static Window winView;
@@ -27,7 +54,6 @@ namespace CpT
         public static bool flgMoutDown = false;
         public static bool blModeChange = false;
 
-
         public static int ScreenX0 = 0;
         public static int ScreenX1 = 0;
         public static int ScreenY0 = 0;
@@ -35,11 +61,6 @@ namespace CpT
 
         public static int CursorX = 0;
         public static int CursorY = 0;
-
-        //public static double MdownX = 0;
-        //public static double MdownY = 0;
-        //public static double MupX = 0;
-        //public static double MupY = 0;
 
         public static System.Windows.Point Pdown, Pup;
 
@@ -49,6 +70,15 @@ namespace CpT
         public static System.Windows.Point point;
 
         public static Bitmap Bpm;
+
+        //******************************************************************
+        public static void setConfigSaveDir(string setDir)
+        {
+            configValue = configValue.Replace(common.lst_strDir[(int)enmDirNum.Save], "");
+            configValue += setDir;
+
+            clsFC.Txt_File_Write(common.lst_strDir[(int)enmDirNum.Applli] + strConfigFileName, configValue, true);
+        }
 
 
         //******************************************************************
@@ -90,8 +120,6 @@ namespace CpT
                 PointStart.Y = p0.Y;
                 PointEnd.Y = p1.Y;
             }
-
-
         }
 
         //******************************************************************
@@ -100,7 +128,6 @@ namespace CpT
             flgImageSet = false;
             flgDrug = false;
         }
-
 
         //******************************************************************
         public static Bitmap GetBitmap(System.Windows.Point p_start, System.Windows.Point p_end)
@@ -151,7 +178,6 @@ namespace CpT
 
             return true;
         }
-
 
         //******************************************************************
         public static void DoEvents()
@@ -249,9 +275,9 @@ namespace CpT
             */
 
             Window win = new Window();
-            switch(mode_num)
+            switch (mode_num)
             {
-                
+
                 case (int)enm_mode.drag:
                     win = common.winDrug;
                     common.winDrug.Visibility = Visibility.Visible;

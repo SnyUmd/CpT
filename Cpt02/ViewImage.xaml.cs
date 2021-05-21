@@ -17,6 +17,7 @@ namespace CpT
         string NewLine = "\r\n";
 
         Bitmap bmpImage;
+
         //******************************************************************
         public ViewImage(System.Windows.Point p_start, System.Windows.Point p_end)
         {
@@ -39,7 +40,6 @@ namespace CpT
             this.Left = 0;
             this.Top = 0;
         }
-                
 
         //******************************************************************
         private void close(object sender, EventArgs e)
@@ -72,12 +72,14 @@ namespace CpT
             {
                 string strFile = "";
 
-                strFile = common.PngFileSave(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\");
+                strFile = common.PngFileSave(common.lst_strDir[(int)enmDirNum.Save]);
                 if (strFile == "") return;
 
                 try
                 {
                     bmpImage.Save(strFile, ImageFormat.Png);
+                    common.lst_strDir[(int)enmDirNum.Save] = common.clsFC.Get_Folder_Name(strFile);
+                    common.setConfigSaveDir(common.lst_strDir[(int)enmDirNum.Save]);
                 }
                 catch (Exception)
                 {
