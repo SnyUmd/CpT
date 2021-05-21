@@ -14,6 +14,7 @@ namespace CpT
     public partial class ViewImage : Window
     {
         bool flgCtrl = false;
+        string NewLine = "\r\n";
 
         Bitmap bmpImage;
         //******************************************************************
@@ -74,7 +75,14 @@ namespace CpT
                 strFile = common.PngFileSave(System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\");
                 if (strFile == "") return;
 
-                bmpImage.Save(strFile, ImageFormat.Png);
+                try
+                {
+                    bmpImage.Save(strFile, ImageFormat.Png);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("ファイルの保存に失敗しました。" );
+                }
                 flgCtrl = false;
             }
         }
