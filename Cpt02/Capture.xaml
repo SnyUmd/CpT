@@ -15,7 +15,6 @@
         MouseDown="Mouse_down"
         MouseUp="Mouse_Up"
         Visibility="Visible" 
-        Icon="/image/icon.Png"
         AllowsTransparency="True" WindowStyle="None">
     
     <Grid>
