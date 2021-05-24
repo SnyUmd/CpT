@@ -34,11 +34,13 @@ namespace CpT
 
     public static class common
     {
+        private static string nl = "\r\n";
 
         public static string DicKey_Left = "Left";
         public static string DicKey_Top = "Top";
         public static string DicKey_Width = "Width";
         public static string DicKey_Height = "Height";
+        public static string DicKey_Save = "SaveDir";
 
         public static string strConfigFileName = "CpT.config";
 
@@ -83,6 +85,20 @@ namespace CpT
 
         public static Bitmap Bpm;
 
+        //******************************************************************
+
+        //******************************************************************
+        public static void setConfigFreamLocation(Window win)
+        {
+            configValue = $"{DicKey_Left},{win.Left}{nl}" + 
+                          $"{DicKey_Top},{win.Top}{nl}" +
+                          $"{DicKey_Width},{win.Width}{nl}" +
+                          $"{DicKey_Height},{win.Height}{nl}" +
+                          $"{DicKey_Save},{lst_strDir[(int)enmDirNum.Save]}";
+
+            //コンフィグファイルに情報を書込み
+            clsFC.Txt_File_Write(common.lst_strDir[(int)enmDirNum.Applli] + strConfigFileName, configValue, true);
+        }
 
         //******************************************************************
         /// <summary>

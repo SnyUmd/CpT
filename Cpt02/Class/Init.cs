@@ -58,7 +58,7 @@ namespace CpT
                      $"{common.DicKey_Top},{top}{strNL}" +
                      $"{common.DicKey_Width},{width}{strNL}" +
                      $"{common.DicKey_Height},{height}{strNL}" +
-                     $"SaveDir,{common.clsFC.MyPicture_Directory()}";
+                     $"{common.DicKey_Save},{common.clsFC.MyPicture_Directory()}";
 
                 common.clsFC.Txt_File_Write(fileName, common.configValue, true);
             }

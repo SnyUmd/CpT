@@ -54,6 +54,8 @@ namespace CpT
                 endP.X = this.Left + this.Width;
                 endP.Y = this.Top + this.Height;
 
+                common.setConfigFreamLocation(this);
+
                 common.ViewWindow(this, false);
                 this.Close();
                 ViewImage Vr = new ViewImage(startP, endP);
@@ -62,6 +64,7 @@ namespace CpT
             else if (e.Key == KeySts.Key_ModeDrug)
             {
                 //common.blModeChange = true;
+                common.setConfigFreamLocation(this);
                 common.CpT_mode = (int)enm_mode.drag;
                 common.ViewWindow(this, false);
                 common.winFream = this;
