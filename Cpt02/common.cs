@@ -74,6 +74,8 @@ namespace CpT
         //******************************************************************
         public static void setConfigSaveDir(string setDir)
         {
+            lst_strDir[(int)enmDirNum.Save] = setDir;
+
             configValue = configValue.Replace(common.lst_strDir[(int)enmDirNum.Save], "");
             configValue += setDir;
 
@@ -255,7 +257,7 @@ namespace CpT
                 //OKボタンがクリックされたとき、選択されたファイル名を表示する
                 return sfd.FileName;
             else
-                return "";
+                return sfd.ShowHelp+;
         }
 
         //******************************************************************

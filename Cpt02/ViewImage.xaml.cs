@@ -71,15 +71,21 @@ namespace CpT
             else if (flgCtrl && e.Key == Key.S)
             {
                 string strFile = "";
+                string strFolder = "";
 
+                //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
                 strFile = common.PngFileSave(common.lst_strDir[(int)enmDirNum.Save]);
+                //キャンセルを押されたら抜ける
                 if (strFile == "") return;
+
+                //フォルダを抽出
+                strFolder = common.clsFC.Get_Folder_Name(strFile);
+                //フォルダリストにセットconfigファイルにセット
+                common.setConfigSaveDir(strFolder);
 
                 try
                 {
                     bmpImage.Save(strFile, ImageFormat.Png);
-                    common.lst_strDir[(int)enmDirNum.Save] = common.clsFC.Get_Folder_Name(strFile);
-                    common.setConfigSaveDir(common.lst_strDir[(int)enmDirNum.Save]);
                 }
                 catch (Exception)
                 {
