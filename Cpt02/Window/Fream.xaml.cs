@@ -25,6 +25,13 @@ namespace CpT
             InitializeComponent();
             this.Topmost = true;
             common.winFream = this;
+
+            Init.ReadConfigValue();
+
+            this.Left = common.DicFreamLocation[common.DicKey_Left];
+            this.Top = common.DicFreamLocation[common.DicKey_Top];
+            this.Width = common.DicFreamLocation[common.DicKey_Width];
+            this.Height = common.DicFreamLocation[common.DicKey_Height];
         }
 
         //******************************************************************
@@ -38,7 +45,7 @@ namespace CpT
         private void Fr_keyDown(object sender, KeyEventArgs e)
         {
             //if (common.blModeChange) return;
-            if (e.Key == Key.Enter)
+            if (e.Key == KeySts.Key_Capture)
             {
                 Point startP = new Point();
                 Point endP = new Point();
@@ -46,13 +53,13 @@ namespace CpT
                 startP.Y = this.Top;
                 endP.X = this.Left + this.Width;
                 endP.Y = this.Top + this.Height;
-                //ViewImage Vr = new ViewImage(this.PointToScreen(startP), this.PointToScreen(endP));
+
                 common.ViewWindow(this, false);
                 this.Close();
                 ViewImage Vr = new ViewImage(startP, endP);
                 Vr.Show();
             }
-            else if (e.Key == Key.F1)
+            else if (e.Key == KeySts.Key_ModeDrug)
             {
                 //common.blModeChange = true;
                 common.CpT_mode = (int)enm_mode.drag;
@@ -61,7 +68,7 @@ namespace CpT
                 this.Close();
                 common.ChangeMode(common.CpT_mode);
             }
-            else if (e.Key == Key.Escape)
+            else if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)
                 common.AppClose();
         }
     }

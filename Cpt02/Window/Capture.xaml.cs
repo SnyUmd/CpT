@@ -51,10 +51,10 @@ namespace CpT
         //******************************************************************
         private void Key_down(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-                common.AppClose();
+            if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)
+                    common.AppClose();
 
-            if(!common.flgDrug && e.Key == Key.F2)
+            if(!common.flgDrug && e.Key == KeySts.Key_ModeFream)
             {
                 common.CpT_mode = (int)enm_mode.fream;
                 common.ViewWindow(this, false);

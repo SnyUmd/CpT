@@ -1,7 +1,3 @@
-D:\_git\VS\CpT\Cpt02\obj\Release\Cpt.csprojAssemblyReference.cache
-D:\_git\VS\CpT\Cpt02\obj\Release\Capture.g.cs
-D:\_git\VS\CpT\Cpt02\obj\Release\Fream.g.cs
-D:\_git\VS\CpT\Cpt02\obj\Release\ViewImage.g.cs
 D:\_git\VS\CpT\Cpt02\obj\Release\App.g.cs
 D:\_git\VS\CpT\Cpt02\bin\Release\Ctrl_Dll.dll
 D:\_git\VS\CpT\Cpt02\bin\Release\Microsoft.VisualStudio.Imaging.dll
@@ -24,9 +20,6 @@ D:\_git\VS\CpT\Cpt02\bin\Release\Microsoft.VisualStudio.Imaging.xml
 D:\_git\VS\CpT\Cpt02\bin\Release\Microsoft.VisualStudio.Threading.xml
 D:\_git\VS\CpT\Cpt02\bin\Release\Microsoft.VisualStudio.Utilities.xml
 D:\_git\VS\CpT\Cpt02\bin\Release\en\Microsoft.VisualStudio.Imaging.resources.dll
-D:\_git\VS\CpT\Cpt02\obj\Release\Capture.baml
-D:\_git\VS\CpT\Cpt02\obj\Release\ViewImage.baml
-D:\_git\VS\CpT\Cpt02\obj\Release\Fream.baml
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt.csproj.GenerateResource.cache
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt.csproj.CoreCompileInputs.cache
 D:\_git\VS\CpT\Cpt02\obj\Release\Cpt.csproj.CopyComplete
@@ -40,3 +33,9 @@ D:\_git\VS\CpT\Cpt02\obj\Release\CpT.g.resources
 D:\_git\VS\CpT\Cpt02\obj\Release\CpT.Properties.Resources.resources
 D:\_git\VS\CpT\Cpt02\obj\Release\CpT.exe
 D:\_git\VS\CpT\Cpt02\obj\Release\CpT.pdb
+D:\_git\VS\CpT\Cpt02\obj\Release\Window\Capture.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Release\Window\Fream.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Release\Window\ViewImage.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Release\Window\Capture.baml
+D:\_git\VS\CpT\Cpt02\obj\Release\Window\Fream.baml
+D:\_git\VS\CpT\Cpt02\obj\Release\Window\ViewImage.baml

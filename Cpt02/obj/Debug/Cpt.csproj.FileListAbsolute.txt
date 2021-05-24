@@ -19,13 +19,7 @@ D:\_git\VS\CpT\Cpt02\bin\Debug\Microsoft.VisualStudio.Imaging.xml
 D:\_git\VS\CpT\Cpt02\bin\Debug\Microsoft.VisualStudio.Threading.xml
 D:\_git\VS\CpT\Cpt02\bin\Debug\Microsoft.VisualStudio.Utilities.xml
 D:\_git\VS\CpT\Cpt02\bin\Debug\en\Microsoft.VisualStudio.Imaging.resources.dll
-D:\_git\VS\CpT\Cpt02\obj\Debug\Capture.g.cs
-D:\_git\VS\CpT\Cpt02\obj\Debug\Fream.g.cs
-D:\_git\VS\CpT\Cpt02\obj\Debug\ViewImage.g.cs
 D:\_git\VS\CpT\Cpt02\obj\Debug\App.g.cs
-D:\_git\VS\CpT\Cpt02\obj\Debug\Capture.baml
-D:\_git\VS\CpT\Cpt02\obj\Debug\Fream.baml
-D:\_git\VS\CpT\Cpt02\obj\Debug\ViewImage.baml
 D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt.csproj.GenerateResource.cache
 D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt.csproj.CoreCompileInputs.cache
 D:\_git\VS\CpT\Cpt02\obj\Debug\Cpt.csproj.CopyComplete
@@ -40,3 +34,9 @@ D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.Properties.Resources.resources
 D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.exe
 D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.pdb
 D:\_git\VS\CpT\Cpt02\obj\Debug\CpT.csprojAssemblyReference.cache
+D:\_git\VS\CpT\Cpt02\obj\Debug\Window\Capture.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Debug\Window\Fream.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Debug\Window\ViewImage.g.cs
+D:\_git\VS\CpT\Cpt02\obj\Debug\Window\Capture.baml
+D:\_git\VS\CpT\Cpt02\obj\Debug\Window\Fream.baml
+D:\_git\VS\CpT\Cpt02\obj\Debug\Window\ViewImage.baml

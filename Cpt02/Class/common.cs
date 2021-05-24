@@ -34,11 +34,23 @@ namespace CpT
 
     public static class common
     {
+
+        public static string DicKey_Left = "Left";
+        public static string DicKey_Top = "Top";
+        public static string DicKey_Width = "Width";
+        public static string DicKey_Height = "Height";
+
         public static string strConfigFileName = "CpT.config";
 
         public static Ctrl_Dll.cls_FileCtrl clsFC = new Ctrl_Dll.cls_FileCtrl();
 
-        public static List<string> lst_strDir = new List<string>(4);
+        public static List<string> lst_strDir = new List<string>() 
+        {
+            clsFC.App_Directory_Acquisition(),
+            clsFC.Desk_Top_Directory(),
+            clsFC.Mydocument_Directory(),
+            ""
+        };
         public static Dictionary<string, int> DicFreamLocation = new Dictionary<string, int>();
 
         public static string configValue = "";
@@ -71,14 +83,23 @@ namespace CpT
 
         public static Bitmap Bpm;
 
+
+        //******************************************************************
+        /// <summary>
+        /// セーブフォルダをセット
+        /// </summary>
+        /// <param name="setDir">新規フォルダ</param>
         //******************************************************************
         public static void setConfigSaveDir(string setDir)
         {
+            //フォルダリストにセーブフォルダをセット
             lst_strDir[(int)enmDirNum.Save] = setDir;
 
+            //コンフィグ情報からフォルダ名を削除
             configValue = configValue.Replace(common.lst_strDir[(int)enmDirNum.Save], "");
+            //コンフィグ情報へ新規フォルダをセット
             configValue += setDir;
-
+            //コンフィグファイルに情報を書込み
             clsFC.Txt_File_Write(common.lst_strDir[(int)enmDirNum.Applli] + strConfigFileName, configValue, true);
         }
 
@@ -205,18 +226,18 @@ namespace CpT
         {
             if (appear)
             {
-                for (double i = 1; i < 20; i++)
+                for (double i = 1; i < 10; i++)
                 {
-                    win.Opacity = i * 0.02;
+                    win.Opacity = i * 0.04;
                     common.DoEvents();
                     System.Threading.Thread.Sleep(1);
                 }
             }
             else
             {
-                for (double i = 30; i > 0; i--)
+                for (double i = 10; i > 0; i--)
                 {
-                    win.Opacity = i * 0.01;
+                    win.Opacity = i * 0.04;
                     common.DoEvents();
                     System.Threading.Thread.Sleep(1);
                 }
@@ -257,25 +278,12 @@ namespace CpT
                 //OKボタンがクリックされたとき、選択されたファイル名を表示する
                 return sfd.FileName;
             else
-                return sfd.ShowHelp+;
+                return "";
         }
 
         //******************************************************************
         public static void ChangeMode(int mode_num)
         {
-            /*
-            if (mode_num == (int)enm_mode.drag)
-            {
-                next_window.Visibility = Visibility.Visible;
-                ViewWindow(next_window, true);
-            }
-            else
-            {
-                next_window.Show();
-                ViewWindow(next_window, true);
-            }
-            */
-
             Window win = new Window();
             switch (mode_num)
             {

@@ -56,22 +56,24 @@ namespace CpT
         //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape || e.Key == Key.Delete || e.Key == Key.Back)
+            if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)// || e.Key == KeySts.Key_Close2)
                 common.AppClose();
 
-            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+            if (e.Key == KeySts.Key_CtrlL || e.Key == KeySts.Key_CtrlR)
                 flgCtrl = true;
 
-            if (flgCtrl && e.Key == Key.C)
+            if (flgCtrl && e.Key == KeySts.Key_Copy)
             {
                 Clipboard.SetData(DataFormats.Bitmap, bmpImage);
                 flgCtrl = false;
             }
 
-            else if (flgCtrl && e.Key == Key.S)
+            else if (flgCtrl && e.Key == KeySts.Key_Save)
             {
                 string strFile = "";
                 string strFolder = "";
+
+                Init.ReadConfigValue();
 
                 //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
                 strFile = common.PngFileSave(common.lst_strDir[(int)enmDirNum.Save]);

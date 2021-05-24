@@ -66,13 +66,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Fream.xaml.cs">
+    <Compile Include="Class\KeySts.cs" />
+    <Compile Include="Window\Fream.xaml.cs">
       <DependentUpon>Fream.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewImage.xaml.cs">
+    <Compile Include="Class\Init.cs" />
+    <Compile Include="Window\ViewImage.xaml.cs">
       <DependentUpon>ViewImage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Capture.xaml">
+    <Page Include="Window\Capture.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -80,15 +82,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Capture.xaml.cs">
+    <Compile Include="Window\Capture.xaml.cs">
       <DependentUpon>Capture.xaml</DependentUpon>
     </Compile>
-    <Compile Include="common.cs" />
-    <Page Include="Fream.xaml">
+    <Compile Include="Class\common.cs" />
+    <Page Include="Window\Fream.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewImage.xaml">
+    <Page Include="Window\ViewImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -119,23 +121,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\icon.Png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\0e5c6cede481e7ff77d65d52d7278977_xxo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\0e5c6cede481e7ff77d65d52d7278977_i144.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="0e5c6cede481e7ff77d65d52d7278977_xxo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\a4a1ee4721c0e189485229b8fb247589_i144.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="6b5447b7c42e56bae079afc58ea442e1_xxo.ico" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

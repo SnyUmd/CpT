@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CpT"
              Deactivated="appDeactiv"
-             StartupUri="Capture.xaml">
+             StartupUri="Window/Capture.xaml">
     <Application.Resources>
          
     </Application.Resources>
