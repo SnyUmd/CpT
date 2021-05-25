@@ -40,8 +40,17 @@ namespace CpT
             //開いた段階でクリップボードにセット
             Clipboard.SetData(DataFormats.Bitmap, bmpImage);
 
-            this.Left = 0;
-            this.Top = 0;
+            //this.Left = 0;
+            //this.Top = 0;
+            int offSetW = 0;
+            int offSetH = 0;
+            if (!(p_start.X + this.Width > SystemParameters.WorkArea.Width - 20)) offSetW = 20;
+            if (!(p_start.Y + this.Height > SystemParameters.WorkArea.Height - 20)) offSetH = 20;
+            
+            this.Left = p_start.X + offSetW;
+            this.Top = p_start.Y + offSetH;
+
+            bmpImage.Dispose();
         }
 
         //******************************************************************

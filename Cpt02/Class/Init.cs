@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace CpT
@@ -15,32 +16,11 @@ namespace CpT
         public static int left = 100, top = 100, width = 250, height = 150;
 
         //******************************************************************
-        /// <summary>
-        /// ディレクトリ情報を取得
-        /// </summary>
-        //******************************************************************
-        /*public static void ReadDir()
+        public static void GetScreenSize()
         {
-            for (int i = 0; i < sizeof(enmDirNum); i++)
-            {
-                switch (i)
-                {
-                    case (int)enmDirNum.Applli:
-                        common.lst_strDir.Add(common.clsFC.App_Directory_Acquisition());
-                        break;
-                    case (int)enmDirNum.Desktop:
-                        common.lst_strDir.Add(common.clsFC.Desk_Top_Directory());
-                        break;
-                    case (int)enmDirNum.Document:
-                        common.lst_strDir.Add(common.clsFC.Mydocument_Directory());
-                        break;
-                    case (int)enmDirNum.Save:
-                        common.lst_strDir.Add("");
-                        break;
-                }
-            }
-        }*/
-
+            common.ScreenW = (int)SystemParameters.WorkArea.Width;
+            common.ScreenH = (int)SystemParameters.WorkArea.Height;
+        }
 
         //******************************************************************
         /// <summary>

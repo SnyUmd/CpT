@@ -36,6 +36,9 @@ namespace CpT
     {
         private static string nl = "\r\n";
 
+        public static int ScreenW = 0;
+        public static int ScreenH = 0;
+
         public static string DicKey_Left = "Left";
         public static string DicKey_Top = "Top";
         public static string DicKey_Width = "Width";
