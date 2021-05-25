@@ -10,7 +10,7 @@
         Closed="close"
         mc:Ignorable="d"
         Title="ViewImage" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None">
-    <Grid Background="#FF0097FF">
+    <Grid Background="Red">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1"/>
             <ColumnDefinition Width="*"/>
@@ -23,6 +23,6 @@
         </Grid.RowDefinitions>
 
         <Image Grid.Row="1" Grid.Column="1" x:Name="img"/>
-        <Canvas Background="Blue"/>
+        <Canvas Background="Red"/>
     </Grid>
 </Window>
