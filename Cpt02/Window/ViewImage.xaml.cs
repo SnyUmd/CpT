@@ -37,6 +37,9 @@ namespace CpT
 
             common.SetImgCtrl(bmpImage, img);
 
+            //開いた段階でクリップボードにセット
+            Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+
             this.Left = 0;
             this.Top = 0;
         }
