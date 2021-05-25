@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows;
 using System.Windows.Input;
-
+using System.Windows.Media;
 
 namespace CpT
 {
@@ -52,6 +53,17 @@ namespace CpT
 
             bmpImage.Dispose();
         }
+        //******************************************************************
+        private void FlontSw(bool blFlont)
+        {
+            if(blFlont)
+                this.Background = new SolidColorBrush(Colors.Red);
+            else
+                this.Background = new SolidColorBrush(Colors.Blue);
+
+            this.Topmost = blFlont;
+
+        }
 
         //******************************************************************
         private void close(object sender, EventArgs e)
@@ -73,6 +85,8 @@ namespace CpT
 
             if (e.Key == KeySts.Key_CtrlL || e.Key == KeySts.Key_CtrlR)
                 flgCtrl = true;
+
+            if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost);
 
             if (flgCtrl && e.Key == KeySts.Key_Copy)
             {
@@ -107,6 +121,8 @@ namespace CpT
                 }
                 flgCtrl = false;
             }
+
+            flgCtrl = false;
         }
 
         //******************************************************************
