@@ -89,8 +89,8 @@ namespace CpT
         //******************************************************************
         public static bool CheckScreenSize()
         {
-            int ScreenW = (int)SystemParameters.PrimaryScreenWidth;
-            int ScreenH = (int)SystemParameters.PrimaryScreenHeight;
+            int ScreenW = (int)SystemParameters.WorkArea.Width;
+            int ScreenH = (int)SystemParameters.WorkArea.Height;
 
             if (ScreenW < common.DicFreamLocation[common.DicKey_Left] ||
                 ScreenH < common.DicFreamLocation[common.DicKey_Top]) return false;

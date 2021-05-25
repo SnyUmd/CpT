@@ -46,6 +46,23 @@ namespace CpT
             }
             common.setConfigFreamLocation(this);
         }
+        //******************************************************************
+        private void CaptureRun()
+        {
+            Point startP = new Point();
+            Point endP = new Point();
+            startP.X = this.Left;
+            startP.Y = this.Top;
+            endP.X = this.Left + this.Width;
+            endP.Y = this.Top + this.Height;
+
+            common.setConfigFreamLocation(this);
+
+            common.ViewWindow(this, false);
+            this.Close();
+            ViewImage Vr = new ViewImage(startP, endP);
+            Vr.Show();
+        }
 
         //******************************************************************
         private void mouseL_Bdown(object sender, MouseButtonEventArgs e)
@@ -58,22 +75,8 @@ namespace CpT
         private void Fr_keyDown(object sender, KeyEventArgs e)
         {
             //if (common.blModeChange) return;
-            if (e.Key == KeySts.Key_Capture)
-            {
-                Point startP = new Point();
-                Point endP = new Point();
-                startP.X = this.Left;
-                startP.Y = this.Top;
-                endP.X = this.Left + this.Width;
-                endP.Y = this.Top + this.Height;
+            if (e.Key == KeySts.Key_Capture) CaptureRun();
 
-                common.setConfigFreamLocation(this);
-
-                common.ViewWindow(this, false);
-                this.Close();
-                ViewImage Vr = new ViewImage(startP, endP);
-                Vr.Show();
-            }
             else if (e.Key == KeySts.Key_ModeDrug)
             {
                 //common.blModeChange = true;
@@ -86,6 +89,17 @@ namespace CpT
             }
             else if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)
                 common.AppClose();
+
+            else if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
+            else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
+            else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Top -= 1;
+            else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Top += 1;
+        }
+
+        //******************************************************************
+        private void FreamDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            CaptureRun();
         }
     }
 }

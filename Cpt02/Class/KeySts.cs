@@ -24,5 +24,10 @@ namespace CpT
         public static Key Key_CtrlL = Key.LeftCtrl;
         public static Key Key_CtrlR = Key.RightCtrl;
 
+        public static Key Key_Left = Key.Left;
+        public static Key Key_Right = Key.Right;
+        public static Key Key_Up = Key.Up;
+        public static Key Key_Down = Key.Down;
+
     }
 }
