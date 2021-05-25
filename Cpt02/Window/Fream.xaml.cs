@@ -28,10 +28,23 @@ namespace CpT
 
             Init.ReadConfigValue();
 
-            this.Left = common.DicFreamLocation[common.DicKey_Left];
-            this.Top = common.DicFreamLocation[common.DicKey_Top];
-            this.Width = common.DicFreamLocation[common.DicKey_Width];
-            this.Height = common.DicFreamLocation[common.DicKey_Height];
+
+
+            if (!common.CheckScreenSize())
+            {
+                this.Left = Init.left;
+                this.Top = Init.top;
+                this.Width = Init.width;
+                this.Height = Init.height;
+            }
+            else
+            {
+                this.Left = common.DicFreamLocation[common.DicKey_Left];
+                this.Top = common.DicFreamLocation[common.DicKey_Top];
+                this.Width = common.DicFreamLocation[common.DicKey_Width];
+                this.Height = common.DicFreamLocation[common.DicKey_Height];
+            }
+            common.setConfigFreamLocation(this);
         }
 
         //******************************************************************

@@ -85,7 +85,24 @@ namespace CpT
 
         public static Bitmap Bpm;
 
+
         //******************************************************************
+        public static bool CheckScreenSize()
+        {
+            int ScreenW = (int)SystemParameters.PrimaryScreenWidth;
+            int ScreenH = (int)SystemParameters.PrimaryScreenHeight;
+
+            if (ScreenW < common.DicFreamLocation[common.DicKey_Left] ||
+                ScreenH < common.DicFreamLocation[common.DicKey_Top]) return false;
+
+            else return true;
+        }
+
+        //******************************************************************
+        public static void ResetLocation()
+        {
+            
+        }
 
         //******************************************************************
         public static void setConfigFreamLocation(Window win)
