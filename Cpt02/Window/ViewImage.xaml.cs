@@ -104,6 +104,7 @@ namespace CpT
                 string strFile = "";
                 string strFolder = "";
                 string strStartFolder = "";
+                string buf;
                 int iFolderNum = (int)enmDirNum.Save;
 
                 Init.ReadConfigValue();

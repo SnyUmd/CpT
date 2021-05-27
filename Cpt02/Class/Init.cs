@@ -31,16 +31,19 @@ namespace CpT
         {
             string fileName = common.lst_strDir[(int)enmDirNum.Applli] + common.strConfigFileName;
             //string SetValue = "";
+            string buf;
 
             if (!common.clsFC.File_Fined(fileName))
             {
                 common.clsFC.File_Create(fileName);
 
+                buf = common.clsTC.mEnctyption(common.clsFC.MyPicture_Directory(), common.aryEncryptionKey);
+
                 common.configValue = $"{common.DicKey_Left},{left}{strNL}" +
                      $"{common.DicKey_Top},{top}{strNL}" +
                      $"{common.DicKey_Width},{width}{strNL}" +
                      $"{common.DicKey_Height},{height}{strNL}" +
-                     $"{common.DicKey_Save},{common.clsFC.MyPicture_Directory()}";
+                     $"{common.DicKey_Save},{buf}";
 
                 common.clsFC.Txt_File_Write(fileName, common.configValue, true);
             }
@@ -53,6 +56,7 @@ namespace CpT
         //******************************************************************
         public static void ReadConfigValue()
         {
+            string buf;
             string fileName = common.lst_strDir[(int)enmDirNum.Applli] + common.strConfigFileName;
             string[] rn = { "\r\n" };
             string[] aryValue;
@@ -70,7 +74,11 @@ namespace CpT
                 if (i < aryValue.Length - 1)
                     common.DicFreamLocation.Add(Line[0], int.Parse(Line[1]));
                 else
-                    common.lst_strDir[(int)enmDirNum.Save] = Line[1];
+                {
+                    buf = common.clsTC.mRestoration(Line[1], common.aryEncryptionKey);
+
+                    common.lst_strDir[(int)enmDirNum.Save] = buf;
+                }
             }
         }
     }
