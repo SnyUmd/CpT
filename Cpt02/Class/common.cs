@@ -276,6 +276,10 @@ namespace CpT
         //******************************************************************
         public static void ViewWindow(Window win, bool appear)
         {
+            if (appear) win.Opacity = 0.4;
+            else win.Opacity = 0;
+
+            /*
             if (appear)
             {
                 for (double i = 1; i < 10; i++)
@@ -294,44 +298,45 @@ namespace CpT
                     System.Threading.Thread.Sleep(1);
                 }
             }
+            */
+
         }
+            //******************************************************************
+            public static string PngFileSave(string str_top_dir)
+                {
+                    //SaveFileDialogクラスのインスタンスを作成
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    //はじめに「ファイル名」で表示される文字列を指定する
+                    sfd.FileName = "NewFile";
+                    //はじめに表示されるフォルダを指定する
+                    sfd.InitialDirectory = str_top_dir;
 
-        //******************************************************************
-        public static string PngFileSave(string str_top_dir)
-        {
-            //SaveFileDialogクラスのインスタンスを作成
-            SaveFileDialog sfd = new SaveFileDialog();
-            //はじめに「ファイル名」で表示される文字列を指定する
-            sfd.FileName = "NewFile";
-            //はじめに表示されるフォルダを指定する
-            sfd.InitialDirectory = str_top_dir;
+                    //[ファイルの種類]に表示される選択肢を指定する
+                    //指定しない（空の文字列）の時は、現在のディレクトリが表示される
+                    sfd.Filter = "Pngファイル(*.Png)|*.Png";
 
-            //[ファイルの種類]に表示される選択肢を指定する
-            //指定しない（空の文字列）の時は、現在のディレクトリが表示される
-            sfd.Filter = "Pngファイル(*.Png)|*.Png";
-
-            //[ファイルの種類]ではじめに選択されるものを指定する
-            sfd.FilterIndex = 1;
+                    //[ファイルの種類]ではじめに選択されるものを指定する
+                    sfd.FilterIndex = 1;
 
 
-            //タイトルを設定する
-            sfd.Title = "Please select a save destination file";
-            //ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
-            sfd.RestoreDirectory = true;
-            //既に存在するファイル名を指定したとき警告する
-            //デフォルトでTrueなので指定する必要はない
-            sfd.OverwritePrompt = true;
-            //存在しないパスが指定されたとき警告を表示する
-            //デフォルトでTrueなので指定する必要はない
-            sfd.CheckPathExists = true;
+                    //タイトルを設定する
+                    sfd.Title = "Please select a save destination file";
+                    //ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
+                    sfd.RestoreDirectory = true;
+                    //既に存在するファイル名を指定したとき警告する
+                    //デフォルトでTrueなので指定する必要はない
+                    sfd.OverwritePrompt = true;
+                    //存在しないパスが指定されたとき警告を表示する
+                    //デフォルトでTrueなので指定する必要はない
+                    sfd.CheckPathExists = true;
 
-            //ダイアログを表示する
-            if (sfd.ShowDialog() == DialogResult.OK)
-                //OKボタンがクリックされたとき、選択されたファイル名を表示する
-                return sfd.FileName;
-            else
-                return "";
-        }
+                    //ダイアログを表示する
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                        //OKボタンがクリックされたとき、選択されたファイル名を表示する
+                        return sfd.FileName;
+                    else
+                        return "";
+                }
 
         //******************************************************************
         public static void ChangeMode(int mode_num)
