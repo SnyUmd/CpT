@@ -51,7 +51,6 @@ namespace CpT
             this.Left = p_start.X + offSetW;
             this.Top = p_start.Y + offSetH;
 
-            bmpImage.Dispose();
         }
         //******************************************************************
         private void FlontSw(bool blFlont)
@@ -104,11 +103,19 @@ namespace CpT
             {
                 string strFile = "";
                 string strFolder = "";
+                string strStartFolder = "";
+                int iFolderNum = (int)enmDirNum.Save;
 
                 Init.ReadConfigValue();
 
+                //フォルダが存在しなければデスクトップにする。
+                if (!common.clsFC.Folder_Fined(common.lst_strDir[(int)enmDirNum.Save]))
+                    iFolderNum = (int)enmDirNum.Desktop;
+
+                strStartFolder = common.lst_strDir[iFolderNum];
+
                 //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
-                strFile = common.PngFileSave(common.lst_strDir[(int)enmDirNum.Save]);
+                strFile = common.PngFileSave(strStartFolder);
                 //キャンセルを押されたら抜ける
                 if (strFile == "") return;
 

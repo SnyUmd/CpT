@@ -18,8 +18,8 @@ namespace CpT
     enum enmDirNum
     {
         Applli,
-        Document,
         Desktop,
+        Document,
         Save
     }
 
@@ -128,11 +128,11 @@ namespace CpT
         //******************************************************************
         public static void setConfigSaveDir(string setDir)
         {
-            //フォルダリストにセーブフォルダをセット
-            lst_strDir[(int)enmDirNum.Save] = setDir;
-
             //コンフィグ情報からフォルダ名を削除
             configValue = configValue.Replace(common.lst_strDir[(int)enmDirNum.Save], "");
+
+            //フォルダリストにセーブフォルダをセット
+            lst_strDir[(int)enmDirNum.Save] = setDir;
             //コンフィグ情報へ新規フォルダをセット
             configValue += setDir;
             //コンフィグファイルに情報を書込み

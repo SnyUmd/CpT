@@ -39,4 +39,3 @@ D:\_git\VS\CpT\Cpt02\obj\Release\Window\ViewImage.g.cs
 D:\_git\VS\CpT\Cpt02\obj\Release\Window\Capture.baml
 D:\_git\VS\CpT\Cpt02\obj\Release\Window\Fream.baml
 D:\_git\VS\CpT\Cpt02\obj\Release\Window\ViewImage.baml
-D:\_git\VS\CpT\Cpt02\obj\Release\CpT.csprojAssemblyReference.cache
