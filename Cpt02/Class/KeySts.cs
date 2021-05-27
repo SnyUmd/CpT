@@ -24,7 +24,9 @@ namespace CpT
         public static Key Key_Up = Key.Up;
         public static Key Key_Down = Key.Down;
 
-        public static Key Key_AlwaysFlongSW = Key.Space;
+        public static Key Key_AlwaysFlongSW = Key.Enter;
+
+        public static Key Key_NewApp = Key.Space;
 
     }
 }

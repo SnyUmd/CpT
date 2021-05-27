@@ -85,57 +85,68 @@ namespace CpT
         //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)// || e.Key == KeySts.Key_Close2)
-                common.AppClose();
-
-            if (e.Key == KeySts.Key_CtrlL || e.Key == KeySts.Key_CtrlR)
-                flgCtrl = true;
-
-            if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost);
-
-            if (flgCtrl && e.Key == KeySts.Key_Copy)
+            if (flgCtrl)
             {
-                Clipboard.SetData(DataFormats.Bitmap, bmpImage);
-                flgCtrl = false;
-            }
+                if (e.Key == KeySts.Key_Copy)
+                {
+                    Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+                    flgCtrl = false;
+                }
 
-            else if (flgCtrl && e.Key == KeySts.Key_Save)
+                if (e.Key == KeySts.Key_Save)
+                {
+                    string strFile = "";
+                    string strFolder = "";
+                    string strStartFolder = "";
+                    string buf;
+                    int iFolderNum = (int)enmDirNum.Save;
+
+                    Init.ReadConfigValue();
+
+                    //フォルダが存在しなければデスクトップにする。
+                    if (!common.clsFC.Folder_Fined(common.lst_strDir[(int)enmDirNum.Save]))
+                        iFolderNum = (int)enmDirNum.Desktop;
+
+                    strStartFolder = common.lst_strDir[iFolderNum];
+
+                    //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
+                    strFile = common.PngFileSave(strStartFolder);
+                    //キャンセルを押されたら抜ける
+                    if (strFile == "") return;
+
+                    //フォルダを抽出
+                    strFolder = common.clsFC.Get_Folder_Name(strFile);
+                    //フォルダリストにセットconfigファイルにセット
+                    common.setConfigSaveDir(strFolder);
+
+                    try
+                    {
+                        bmpImage.Save(strFile, ImageFormat.Png);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("ファイルの保存に失敗しました。");
+                    }
+                    flgCtrl = false;
+                }
+            }
+            else
             {
-                string strFile = "";
-                string strFolder = "";
-                string strStartFolder = "";
-                string buf;
-                int iFolderNum = (int)enmDirNum.Save;
+                if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)// || e.Key == KeySts.Key_Close2)
+                    common.AppClose();
 
-                Init.ReadConfigValue();
+                else if (e.Key == KeySts.Key_CtrlL || e.Key == KeySts.Key_CtrlR)
+                    flgCtrl = true;
 
-                //フォルダが存在しなければデスクトップにする。
-                if (!common.clsFC.Folder_Fined(common.lst_strDir[(int)enmDirNum.Save]))
-                    iFolderNum = (int)enmDirNum.Desktop;
+                else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost);
 
-                strStartFolder = common.lst_strDir[iFolderNum];
-
-                //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
-                strFile = common.PngFileSave(strStartFolder);
-                //キャンセルを押されたら抜ける
-                if (strFile == "") return;
-
-                //フォルダを抽出
-                strFolder = common.clsFC.Get_Folder_Name(strFile);
-                //フォルダリストにセットconfigファイルにセット
-                common.setConfigSaveDir(strFolder);
-
-                try
+                else if(e.Key == KeySts.Key_NewApp)
                 {
-                    bmpImage.Save(strFile, ImageFormat.Png);
+                    this.WindowState = WindowState.Minimized; 
+                    string buf = common.lst_strDir[(int)enmDirNum.Applli] + @"CpT.exe";
+                    common.clsFC.Ex_App_Start(buf, false);
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("ファイルの保存に失敗しました。" );
-                }
-                flgCtrl = false;
             }
-
         }
 
         //******************************************************************
