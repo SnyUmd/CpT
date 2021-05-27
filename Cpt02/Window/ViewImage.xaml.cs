@@ -78,6 +78,12 @@ namespace CpT
         }
 
         //******************************************************************
+        private void keyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) flgCtrl = false;
+        }
+
+        //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)// || e.Key == KeySts.Key_Close2)
@@ -122,7 +128,6 @@ namespace CpT
                 flgCtrl = false;
             }
 
-            flgCtrl = false;
         }
 
         //******************************************************************
