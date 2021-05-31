@@ -87,8 +87,8 @@ namespace CpT
                 this.Close();
                 common.ChangeMode(common.CpT_mode);
             }
-            else if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)
-                common.AppClose();
+            else if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1) common.AppClose();
+            else if (e.Key == KeySts.Key_DefaultMove) FreamDefault();
 
             else if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
             else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
@@ -100,6 +100,17 @@ namespace CpT
         private void FreamDoubleClick(object sender, MouseButtonEventArgs e)
         {
             CaptureRun();
+        }
+
+        private void FreamDefault()
+        {
+            this.Left = Init.left;
+            this.Top = Init.top;
+            this.Width = Init.width;
+            this.Height = Init.height;
+
+            common.setConfigFreamLocation(this);
+
         }
     }
 }
