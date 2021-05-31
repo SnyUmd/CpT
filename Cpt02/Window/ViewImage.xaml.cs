@@ -24,7 +24,7 @@ namespace CpT
         {
             InitializeComponent();
             this.Topmost = true;
-            
+
 
             //common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
             common.Bpm = common.GetBitmap(p_start, p_end);
@@ -47,7 +47,7 @@ namespace CpT
             int offSetH = 0;
             if (!(p_start.X + this.Width > SystemParameters.WorkArea.Width - 20)) offSetW = 20;
             if (!(p_start.Y + this.Height > SystemParameters.WorkArea.Height - 20)) offSetH = 20;
-            
+
             this.Left = p_start.X + offSetW;
             this.Top = p_start.Y + offSetH;
 
@@ -55,7 +55,7 @@ namespace CpT
         //******************************************************************
         private void FlontSw(bool blFlont)
         {
-            if(blFlont)
+            if (blFlont)
                 this.Background = new SolidColorBrush(Colors.Red);
             else
                 this.Background = new SolidColorBrush(Colors.Blue);
@@ -79,7 +79,7 @@ namespace CpT
         //******************************************************************
         private void keyUp(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) flgCtrl = false;
+            if (e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) flgCtrl = false;
         }
 
         //******************************************************************
@@ -87,11 +87,9 @@ namespace CpT
         {
             if (flgCtrl)
             {
+                flgCtrl = false;
                 if (e.Key == KeySts.Key_Copy)
-                {
                     Clipboard.SetData(DataFormats.Bitmap, bmpImage);
-                    flgCtrl = false;
-                }
 
                 if (e.Key == KeySts.Key_Save)
                 {
@@ -99,6 +97,7 @@ namespace CpT
                     string strFolder = "";
                     string strStartFolder = "";
                     string buf;
+
                     int iFolderNum = (int)enmDirNum.Save;
 
                     Init.ReadConfigValue();
@@ -113,7 +112,6 @@ namespace CpT
                     strFile = common.PngFileSave(strStartFolder);
                     //キャンセルを押されたら抜ける
                     if (strFile == "") return;
-
                     //フォルダを抽出
                     strFolder = common.clsFC.Get_Folder_Name(strFile);
                     //フォルダリストにセットconfigファイルにセット
@@ -127,7 +125,6 @@ namespace CpT
                     {
                         MessageBox.Show("ファイルの保存に失敗しました。");
                     }
-                    flgCtrl = false;
                 }
             }
             else
@@ -140,9 +137,9 @@ namespace CpT
 
                 else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost);
 
-                else if(e.Key == KeySts.Key_NewApp)
+                else if (e.Key == KeySts.Key_NewApp)
                 {
-                    this.WindowState = WindowState.Minimized; 
+                    this.WindowState = WindowState.Minimized;
                     string buf = common.lst_strDir[(int)enmDirNum.Applli] + @"CpT.exe";
                     common.clsFC.Ex_App_Start(buf, false);
                 }
@@ -152,7 +149,6 @@ namespace CpT
         //******************************************************************
         private void MouseDclick(object sender, MouseButtonEventArgs e)
         {
-            //common.AppClose();
             this.WindowState = WindowState.Minimized;
         }
 
