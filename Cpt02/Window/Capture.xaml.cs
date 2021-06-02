@@ -59,6 +59,8 @@ namespace CpT
                 common.CpT_mode = (int)enm_mode.fream;
                 common.ViewWindow(this, false);
                 this.Visibility = Visibility.Hidden;
+                //this.Width = 10;
+                //this.Height = 10;
                 common.winDrug = this;
                 Fream Fr = new Fream();
                 common.ChangeMode(common.CpT_mode);
@@ -124,7 +126,10 @@ namespace CpT
 
             common.ViewWindow(this, false);
             this.Hide();
-            
+
+            common.winDrug.Width = 10;
+            common.winDrug.Height = 10;
+
             ViewImage VI = new ViewImage(common.PointStart, common.PointEnd);
             VI.Show();
         }

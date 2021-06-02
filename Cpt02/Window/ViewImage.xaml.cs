@@ -110,8 +110,12 @@ namespace CpT
 
                     //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
                     strFile = common.PngFileSave(strStartFolder);
-                    //キャンセルを押されたら抜ける
-                    if (strFile == "") return;
+                    //キャンセルを押されたら処理中段
+                    if (strFile == "")
+                    {
+                        flgCtrl = false;
+                        return;
+                    }
                     //フォルダを抽出
                     strFolder = common.clsFC.Get_Folder_Name(strFile);
                     //フォルダリストにセットconfigファイルにセット

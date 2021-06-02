@@ -77,7 +77,13 @@ namespace CpT
                 {
                     buf = common.clsTC.mRestoration(Line[1], common.aryEncryptionKey);
 
+                    buf = (common.clsFC.Folder_Fined(buf)) ? buf : common.lst_strDir[(int)enmDirNum.Desktop];
+                    
                     common.lst_strDir[(int)enmDirNum.Save] = buf;
+                    /*if (common.clsFC.Folder_Fined(buf))
+                        common.lst_strDir[(int)enmDirNum.Save] = buf;
+                    else
+                        common.lst_strDir[(int)enmDirNum.Save] = common.lst_strDir[(int)enmDirNum.Desktop];*/
                 }
             }
         }

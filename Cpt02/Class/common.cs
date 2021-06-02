@@ -93,6 +93,11 @@ namespace CpT
 
 
         //******************************************************************
+        /// <summary>
+        /// configファイルのフレーム位置がスクリーン内に収まっているか判定
+        /// </summary>
+        /// <returns></returns>
+        //******************************************************************
         public static bool CheckScreenSize()
         {
             int ScreenW = (int)SystemParameters.WorkArea.Width;
@@ -115,6 +120,7 @@ namespace CpT
         /// フレームの位置情報をConfigファイルに書込み
         /// </summary>
         /// <param name="win"></param>
+        //******************************************************************
         public static void setConfigFreamLocation(Window win)
         {
             //フォルダ名を暗号化
@@ -139,18 +145,24 @@ namespace CpT
         public static void setConfigSaveDir(string setDir)
         {
             //フォルダ名を暗号化
-            string buf = common.clsTC.mEnctyption(lst_strDir[(int)enmDirNum.Save], common.aryEncryptionKey);
+            string buf = ""; //common.clsTC.mEnctyption(lst_strDir[(int)enmDirNum.Save], common.aryEncryptionKey);
+            //string buf = "";
+            int iBuf;
 
             //コンフィグ情報からフォルダ名を削除
-            configValue = configValue.Replace(buf, "");
+            //configValue = configValue.Replace(buf, "");
+            iBuf = configValue.IndexOf(DicKey_Save) + DicKey_Save.Length + 1;
+            configValue = configValue.Remove(iBuf, configValue.Length - iBuf);
 
             //フォルダリストにセーブフォルダをセット
             lst_strDir[(int)enmDirNum.Save] = setDir;
 
             //新規フォルダを暗号化
-            setDir = common.clsTC.mEnctyption(setDir, common.aryEncryptionKey);
+            //setDir = common.clsTC.mEnctyption(setDir, common.aryEncryptionKey);
+            buf = common.clsTC.mEnctyption(setDir, common.aryEncryptionKey);
             //コンフィグ情報へ新規フォルダをセット
-            configValue += setDir;
+            //configValue += setDir;
+            configValue += buf;
             //コンフィグファイルに情報を書込み
             clsFC.Txt_File_Write(common.lst_strDir[(int)enmDirNum.Applli] + strConfigFileName, configValue, true);
         }

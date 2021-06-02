@@ -28,12 +28,14 @@ namespace CpT
 
             Init.ReadConfigValue();
 
-
-
             if (!common.CheckScreenSize())
             {
-                this.Left = Init.left;
-                this.Top = Init.top;
+                Point mouseP = new Point();
+                mouseP = Mouse.GetPosition(common.winDrug);
+                mouseP = common.winDrug.PointToScreen(mouseP);
+
+                this.Left = mouseP.X - 100;
+                this.Top = mouseP.Y - 100;
                 this.Width = Init.width;
                 this.Height = Init.height;
             }
@@ -44,6 +46,7 @@ namespace CpT
                 this.Width = common.DicFreamLocation[common.DicKey_Width];
                 this.Height = common.DicFreamLocation[common.DicKey_Height];
             }
+
             common.setConfigFreamLocation(this);
         }
         //******************************************************************
@@ -59,6 +62,10 @@ namespace CpT
             common.setConfigFreamLocation(this);
 
             common.ViewWindow(this, false);
+
+            common.winDrug.Width = 10;
+            common.winDrug.Height = 10;
+
             this.Close();
             ViewImage Vr = new ViewImage(startP, endP);
             Vr.Show();
@@ -106,6 +113,7 @@ namespace CpT
         {
             this.Left = Init.left;
             this.Top = Init.top;
+
             this.Width = Init.width;
             this.Height = Init.height;
 
