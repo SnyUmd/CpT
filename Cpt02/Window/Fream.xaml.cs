@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define DEB
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +21,8 @@ namespace CpT
     /// </summary>
     public partial class Fream : Window
     {
+        private System.Drawing.Point dpMouse = new System.Drawing.Point();
+
         //******************************************************************
         public Fream()
         {
@@ -28,24 +32,11 @@ namespace CpT
 
             Init.ReadConfigValue();
 
-            if (!common.CheckScreenSize())
-            {
-                Point mouseP = new Point();
-                mouseP = Mouse.GetPosition(common.winDrug);
-                mouseP = common.winDrug.PointToScreen(mouseP);
+            this.Left = common.DicFreamLocation[common.DicKey_Left];
+            this.Top = common.DicFreamLocation[common.DicKey_Top];
+            this.Width = common.DicFreamLocation[common.DicKey_Width];
+            this.Height = common.DicFreamLocation[common.DicKey_Height];
 
-                this.Left = mouseP.X - 100;
-                this.Top = mouseP.Y - 100;
-                this.Width = Init.width;
-                this.Height = Init.height;
-            }
-            else
-            {
-                this.Left = common.DicFreamLocation[common.DicKey_Left];
-                this.Top = common.DicFreamLocation[common.DicKey_Top];
-                this.Width = common.DicFreamLocation[common.DicKey_Width];
-                this.Height = common.DicFreamLocation[common.DicKey_Height];
-            }
 
             common.setConfigFreamLocation(this);
         }
@@ -95,7 +86,7 @@ namespace CpT
                 common.ChangeMode(common.CpT_mode);
             }
             else if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1) common.AppClose();
-            else if (e.Key == KeySts.Key_DefaultMove) FreamDefault();
+            else if (e.Key == KeySts.Key_DefaultMove) FreamPointDefault();
 
             else if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
             else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
@@ -109,16 +100,33 @@ namespace CpT
             CaptureRun();
         }
 
-        private void FreamDefault()
+        //******************************************************************
+        private void FreamPointDefault()
         {
+            /*
             this.Left = Init.left;
             this.Top = Init.top;
 
             this.Width = Init.width;
             this.Height = Init.height;
+            */
 
+            System.Drawing.Point dp = new System.Drawing.Point();
+            dp = common.GetMousePoint();
+            this.Left = dp.X - 100;
+            this.Top = dp.Y - 100;
+            this.Width = common.DicFreamLocation[common.DicKey_Width];
+            this.Height = common.DicFreamLocation[common.DicKey_Height];
             common.setConfigFreamLocation(this);
 
+        }
+
+        //******************************************************************
+        private void FreamLoaded(object sender, RoutedEventArgs e)
+        {
+            FreamVerification wFV = new FreamVerification();
+            if(ここにCoonfigファイル内の警告表示イネーブルを判定)
+                wFV.ShowDialog();
         }
     }
 }
