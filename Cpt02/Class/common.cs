@@ -29,7 +29,8 @@ namespace CpT
         top,
         width,
         heitht,
-        saveDir
+        saveDir,
+        ここにチェックボックスフラグ情報を追加
     }
 
     public static class common
@@ -39,20 +40,21 @@ namespace CpT
         public static int ScreenW = 0;
         public static int ScreenH = 0;
 
-        public static int[] aryEncryptionKey = {1,3,5,2,4,6};
+        public static int[] aryEncryptionKey = { 1, 3, 5, 2, 4, 6 };
 
         public static string DicKey_Left = "Left";
         public static string DicKey_Top = "Top";
         public static string DicKey_Width = "Width";
         public static string DicKey_Height = "Height";
         public static string DicKey_Save = "SaveDir";
+        //★ここにキーを追加
 
         public static string strConfigFileName = "CpT.config";
 
         public static Ctrl_Dll.cls_FileCtrl clsFC = new Ctrl_Dll.cls_FileCtrl();
         public static Ctrl_Dll.cls_TextCtrl clsTC = new Ctrl_Dll.cls_TextCtrl();
 
-        public static List<string> lst_strDir = new List<string>() 
+        public static List<string> lst_strDir = new List<string>()
         {
             clsFC.App_Directory_Acquisition(),
             clsFC.Desk_Top_Directory(),
@@ -103,7 +105,9 @@ namespace CpT
             int ScreenW = (int)SystemParameters.WorkArea.Width;
             int ScreenH = (int)SystemParameters.WorkArea.Height;
 
-            if (ScreenW < common.DicFreamLocation[common.DicKey_Left] ||
+            if (0 > common.DicFreamLocation[common.DicKey_Left] ||
+                0 > common.DicFreamLocation[common.DicKey_Top] ||
+                ScreenW < common.DicFreamLocation[common.DicKey_Left] ||
                 ScreenH < common.DicFreamLocation[common.DicKey_Top]) return false;
 
             else return true;
@@ -112,7 +116,7 @@ namespace CpT
         //******************************************************************
         public static void ResetLocation()
         {
-            
+
         }
 
         //******************************************************************
@@ -126,11 +130,12 @@ namespace CpT
             //フォルダ名を暗号化
             string buf = common.clsTC.mEnctyption(lst_strDir[(int)enmDirNum.Save], common.aryEncryptionKey);
 
-            configValue = $"{DicKey_Left},{win.Left}{nl}" + 
+            configValue = $"{DicKey_Left},{win.Left}{nl}" +
                           $"{DicKey_Top},{win.Top}{nl}" +
                           $"{DicKey_Width},{win.Width}{nl}" +
                           $"{DicKey_Height},{win.Height}{nl}" +
                           $"{DicKey_Save},{buf}";
+            //★ここにチェックボックス情報を追加
 
             //コンフィグファイルに情報を書込み
             clsFC.Txt_File_Write(common.lst_strDir[(int)enmDirNum.Applli] + strConfigFileName, configValue, true);
@@ -280,12 +285,6 @@ namespace CpT
         }
 
         //******************************************************************
-        public static void AreaChek(double X0, double X1, double Y0, double Y1)
-        {
-
-        }
-
-        //******************************************************************
         public static void ViewWindow(Window win, bool appear)
         {
             if (appear) win.Opacity = 0.4;
@@ -313,42 +312,42 @@ namespace CpT
             */
 
         }
-            //******************************************************************
-            public static string PngFileSave(string str_top_dir)
-                {
-                    //SaveFileDialogクラスのインスタンスを作成
-                    SaveFileDialog sfd = new SaveFileDialog();
-                    //はじめに「ファイル名」で表示される文字列を指定する
-                    sfd.FileName = "NewFile";
-                    //はじめに表示されるフォルダを指定する
-                    sfd.InitialDirectory = str_top_dir;
+        //******************************************************************
+        public static string PngFileSave(string str_top_dir)
+        {
+            //SaveFileDialogクラスのインスタンスを作成
+            SaveFileDialog sfd = new SaveFileDialog();
+            //はじめに「ファイル名」で表示される文字列を指定する
+            sfd.FileName = "NewFile";
+            //はじめに表示されるフォルダを指定する
+            sfd.InitialDirectory = str_top_dir;
 
-                    //[ファイルの種類]に表示される選択肢を指定する
-                    //指定しない（空の文字列）の時は、現在のディレクトリが表示される
-                    sfd.Filter = "Pngファイル(*.Png)|*.Png";
+            //[ファイルの種類]に表示される選択肢を指定する
+            //指定しない（空の文字列）の時は、現在のディレクトリが表示される
+            sfd.Filter = "Pngファイル(*.Png)|*.Png";
 
-                    //[ファイルの種類]ではじめに選択されるものを指定する
-                    sfd.FilterIndex = 1;
+            //[ファイルの種類]ではじめに選択されるものを指定する
+            sfd.FilterIndex = 1;
 
 
-                    //タイトルを設定する
-                    sfd.Title = "Please select a save destination file";
-                    //ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
-                    sfd.RestoreDirectory = true;
-                    //既に存在するファイル名を指定したとき警告する
-                    //デフォルトでTrueなので指定する必要はない
-                    sfd.OverwritePrompt = true;
-                    //存在しないパスが指定されたとき警告を表示する
-                    //デフォルトでTrueなので指定する必要はない
-                    sfd.CheckPathExists = true;
+            //タイトルを設定する
+            sfd.Title = "Please select a save destination file";
+            //ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
+            sfd.RestoreDirectory = true;
+            //既に存在するファイル名を指定したとき警告する
+            //デフォルトでTrueなので指定する必要はない
+            sfd.OverwritePrompt = true;
+            //存在しないパスが指定されたとき警告を表示する
+            //デフォルトでTrueなので指定する必要はない
+            sfd.CheckPathExists = true;
 
-                    //ダイアログを表示する
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                        //OKボタンがクリックされたとき、選択されたファイル名を表示する
-                        return sfd.FileName;
-                    else
-                        return "";
-                }
+            //ダイアログを表示する
+            if (sfd.ShowDialog() == DialogResult.OK)
+                //OKボタンがクリックされたとき、選択されたファイル名を表示する
+                return sfd.FileName;
+            else
+                return "";
+        }
 
         //******************************************************************
         public static void ChangeMode(int mode_num)
@@ -375,6 +374,56 @@ namespace CpT
 
             ViewWindow(win, true);
 
+        }
+
+        //******************************************************************
+        public static System.Drawing.Point GetMousePoint()
+        {
+            System.Drawing.Point pResult = new System.Drawing.Point();
+            pResult = System.Windows.Forms.Cursor.Position;
+            return pResult;
+        }
+
+        //******************************************************************
+        public static bool CheckArea(System.Drawing.Point f_point)
+        {
+            bool blResult = false;
+            bool flPrimary = (f_point.X < 0 || f_point.Y < 0) ? false : true;
+            var screen = System.Windows.Forms.Screen.AllScreens;
+
+            System.Drawing.Point CriteriaPoint = new System.Drawing.Point();
+            int CriteriaW = 0, CriteriaH = 0;
+            int CriteriaLeft = 0, CriteriaTop = 0;
+            int CriteriaRight= 0, CriteriaBottom = 0;
+
+            foreach (Screen s in screen)
+            {
+                if (s.Primary && !flPrimary) continue;
+                else
+                {
+                    CriteriaPoint = s.Bounds.Location;
+                    CriteriaW = s.Bounds.Width;
+                    CriteriaH = s.Bounds.Height;
+                    CriteriaLeft = s.Bounds.Left;
+                    CriteriaTop = s.Bounds.Top;
+                    CriteriaRight = s.Bounds.Right;
+                    CriteriaBottom = s.Bounds.Bottom;
+                    /*System.Windows.MessageBox.Show($"CriteriaW = {CriteriaW}, CriteriaH = {CriteriaH}\r\n" +
+                                                   $"CriteriaL = {CriteriaLeft}, CriteriaT = {CriteriaTop}\r\n" +
+                                                   $"CriteriaR = {CriteriaRight}, CriteriaB = {CriteriaBottom}");*/
+
+                    if (CriteriaLeft < f_point.X &&
+                       CriteriaRight > f_point.X &&
+                       CriteriaTop < f_point.Y &&
+                       CriteriaBottom > f_point.Y)
+                    {
+                        blResult = true;
+                        break;
+                    }
+
+                }
+            }
+            return blResult;
         }
 
     }

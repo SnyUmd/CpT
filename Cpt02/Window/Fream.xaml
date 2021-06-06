@@ -9,6 +9,7 @@
         MouseLeftButtonDown="mouseL_Bdown"
         MouseDoubleClick="FreamDoubleClick"
         ResizeMode="CanResizeWithGrip"
+        Loaded="FreamLoaded"
         Background="Black"
         KeyDown="Fr_keyDown"
         Title="Fream" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None">

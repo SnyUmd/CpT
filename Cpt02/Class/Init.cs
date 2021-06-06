@@ -44,6 +44,7 @@ namespace CpT
                      $"{common.DicKey_Width},{width}{strNL}" +
                      $"{common.DicKey_Height},{height}{strNL}" +
                      $"{common.DicKey_Save},{buf}";
+                //★ここにチェックボックス情報を追加
 
                 common.clsFC.Txt_File_Write(fileName, common.configValue, true);
             }
@@ -84,6 +85,7 @@ namespace CpT
                         common.lst_strDir[(int)enmDirNum.Save] = buf;
                     else
                         common.lst_strDir[(int)enmDirNum.Save] = common.lst_strDir[(int)enmDirNum.Desktop];*/
+                    //★ここにチェックボックス情報を追加
                 }
             }
         }
