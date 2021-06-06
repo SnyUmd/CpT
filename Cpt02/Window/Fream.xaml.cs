@@ -1,8 +1,9 @@
-﻿#define DEB
+﻿//#define DEB
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,8 @@ namespace CpT
     /// </summary>
     public partial class Fream : Window
     {
+
+
         private System.Drawing.Point dpMouse = new System.Drawing.Point();
 
         //******************************************************************
@@ -32,14 +35,75 @@ namespace CpT
 
             Init.ReadConfigValue();
 
-            this.Left = common.DicFreamLocation[common.DicKey_Left];
-            this.Top = common.DicFreamLocation[common.DicKey_Top];
-            this.Width = common.DicFreamLocation[common.DicKey_Width];
-            this.Height = common.DicFreamLocation[common.DicKey_Height];
+            System.Drawing.Point dp = new System.Drawing.Point();
+            dp.X = common.DicFreamLocation[common.DicKey_Left];
+            dp.Y = common.DicFreamLocation[common.DicKey_Top];
 
+            if (common.CheckArea(dp))
+            {
+                this.Left = common.DicFreamLocation[common.DicKey_Left];
+                this.Top = common.DicFreamLocation[common.DicKey_Top];
+                this.Width = common.DicFreamLocation[common.DicKey_Width];
+                this.Height = common.DicFreamLocation[common.DicKey_Height];
+            }
+            else FreamPointDefault();
 
             common.setConfigFreamLocation(this);
+
+
         }
+
+        //******************************************************************
+        private void FreamLoaded(object sender, RoutedEventArgs e)
+        {
+            //FreamVerification wFV = new FreamVerification();
+            //★if(ここにCoonfigファイル内の警告表示イネーブルを判定)
+            //wFV.ShowDialog();
+
+#if DEB
+            System.Drawing.Point dp0 = new System.Drawing.Point();
+            System.Drawing.Point dp1 = new System.Drawing.Point();
+
+            //dp0.X = (int)SystemParameters.PrimaryScreenWidth;
+            //dp0.Y = (int)SystemParameters.PrimaryScreenHeight;
+
+            //dp1 = System.Windows.Forms.Cursor.Position;
+            //dp1.X = (int)SystemParameters.WorkArea;
+            //dp1.Y = (int)SystemParameters.WorkArea.Y;
+
+            //MessageBox.Show($"PrimaryScreen W = {dp0.X} / PrimaryScreen H = {dp0.Y}");
+            //MessageBox.Show($"WorkAria W = {dp1.X} / WorkAria H = {dp1.Y}");
+
+            /*Point pTest = new Point();
+            pTest.X = dp.X;
+            pTest.Y = dp.Y;
+            pTest = (pTest);
+
+            MessageBox.Show($"PrimaryScreen W(変換後) = {pTest.X} / PrimaryScreen H(変換後) = {pTest.Y}");*/
+            Point pTest = new Point();
+            pTest.X = 0;
+            pTest.Y = 0;
+            
+            pTest = PointFromScreen(pTest);
+            this.Left = pTest.X;
+            this.Top = pTest.Y;
+
+            System.Drawing.Point pDebug = new System.Drawing.Point();
+            pDebug = System.Windows.Forms.Cursor.Position;
+            MessageBox.Show($"Mouse Point X = {pDebug.X}, Y = {pDebug.Y}");
+
+            //------------------
+            int testDebug = System.Windows.Forms.Screen.AllScreens.Length;
+            MessageBox.Show($"Screen num = {testDebug}");
+            //------------------
+
+            if (common.CheckArea(pDebug))
+                MessageBox.Show("OK");
+            else
+                MessageBox.Show("NG");
+#endif
+        }
+
         //******************************************************************
         private void CaptureRun()
         {
@@ -61,6 +125,8 @@ namespace CpT
             ViewImage Vr = new ViewImage(startP, endP);
             Vr.Show();
         }
+
+
 
         //******************************************************************
         private void mouseL_Bdown(object sender, MouseButtonEventArgs e)
@@ -109,24 +175,19 @@ namespace CpT
 
             this.Width = Init.width;
             this.Height = Init.height;
+
             */
 
             System.Drawing.Point dp = new System.Drawing.Point();
             dp = common.GetMousePoint();
-            this.Left = dp.X - 100;
-            this.Top = dp.Y - 100;
+            this.Left = dp.X - 50;
+            this.Top = dp.Y - 50;
             this.Width = common.DicFreamLocation[common.DicKey_Width];
             this.Height = common.DicFreamLocation[common.DicKey_Height];
             common.setConfigFreamLocation(this);
 
         }
 
-        //******************************************************************
-        private void FreamLoaded(object sender, RoutedEventArgs e)
-        {
-            FreamVerification wFV = new FreamVerification();
-            if(ここにCoonfigファイル内の警告表示イネーブルを判定)
-                wFV.ShowDialog();
-        }
+
     }
 }

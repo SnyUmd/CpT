@@ -28,7 +28,7 @@ namespace CpT
         {
             if((bool)Ckb.IsChecked)
             {
-                ここに警告イネーブル情報を、configへ書込み
+                //★ここに警告イネーブル情報を、configへ書込み
             }
             this.Close();
         }

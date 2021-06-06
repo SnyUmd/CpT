@@ -47,7 +47,7 @@ namespace CpT
         public static string DicKey_Width = "Width";
         public static string DicKey_Height = "Height";
         public static string DicKey_Save = "SaveDir";
-        ここにキーを追加
+        //★ここにキーを追加
 
         public static string strConfigFileName = "CpT.config";
 
@@ -135,7 +135,7 @@ namespace CpT
                           $"{DicKey_Width},{win.Width}{nl}" +
                           $"{DicKey_Height},{win.Height}{nl}" +
                           $"{DicKey_Save},{buf}";
-            ここにチェックボックス情報を追加
+            //★ここにチェックボックス情報を追加
 
             //コンフィグファイルに情報を書込み
             clsFC.Txt_File_Write(common.lst_strDir[(int)enmDirNum.Applli] + strConfigFileName, configValue, true);
@@ -285,12 +285,6 @@ namespace CpT
         }
 
         //******************************************************************
-        public static void AreaChek(double X0, double X1, double Y0, double Y1)
-        {
-
-        }
-
-        //******************************************************************
         public static void ViewWindow(Window win, bool appear)
         {
             if (appear) win.Opacity = 0.4;
@@ -388,6 +382,48 @@ namespace CpT
             System.Drawing.Point pResult = new System.Drawing.Point();
             pResult = System.Windows.Forms.Cursor.Position;
             return pResult;
+        }
+
+        //******************************************************************
+        public static bool CheckArea(System.Drawing.Point f_point)
+        {
+            bool blResult = false;
+            bool flPrimary = (f_point.X < 0 || f_point.Y < 0) ? false : true;
+            var screen = System.Windows.Forms.Screen.AllScreens;
+
+            System.Drawing.Point CriteriaPoint = new System.Drawing.Point();
+            int CriteriaW = 0, CriteriaH = 0;
+            int CriteriaLeft = 0, CriteriaTop = 0;
+            int CriteriaRight= 0, CriteriaBottom = 0;
+
+            foreach (Screen s in screen)
+            {
+                if (s.Primary && !flPrimary) continue;
+                else
+                {
+                    CriteriaPoint = s.Bounds.Location;
+                    CriteriaW = s.Bounds.Width;
+                    CriteriaH = s.Bounds.Height;
+                    CriteriaLeft = s.Bounds.Left;
+                    CriteriaTop = s.Bounds.Top;
+                    CriteriaRight = s.Bounds.Right;
+                    CriteriaBottom = s.Bounds.Bottom;
+                    /*System.Windows.MessageBox.Show($"CriteriaW = {CriteriaW}, CriteriaH = {CriteriaH}\r\n" +
+                                                   $"CriteriaL = {CriteriaLeft}, CriteriaT = {CriteriaTop}\r\n" +
+                                                   $"CriteriaR = {CriteriaRight}, CriteriaB = {CriteriaBottom}");*/
+
+                    if (CriteriaLeft < f_point.X &&
+                       CriteriaRight > f_point.X &&
+                       CriteriaTop < f_point.Y &&
+                       CriteriaBottom > f_point.Y)
+                    {
+                        blResult = true;
+                        break;
+                    }
+
+                }
+            }
+            return blResult;
         }
 
     }
