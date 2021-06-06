@@ -24,7 +24,7 @@ namespace CpT
     {
 
 
-        private System.Drawing.Point dpMouse = new System.Drawing.Point();
+        //private System.Drawing.Point dpMouse = new System.Drawing.Point();
 
         //******************************************************************
         public Fream()
@@ -109,6 +109,7 @@ namespace CpT
         {
             Point startP = new Point();
             Point endP = new Point();
+
             startP.X = this.Left;
             startP.Y = this.Top;
             endP.X = this.Left + this.Width;

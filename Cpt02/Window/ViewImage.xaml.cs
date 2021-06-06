@@ -15,7 +15,7 @@ namespace CpT
     public partial class ViewImage : Window
     {
         bool flgCtrl = false;
-        string NewLine = "\r\n";
+        //string NewLine = "\r\n";
 
         Bitmap bmpImage;
 
@@ -96,7 +96,7 @@ namespace CpT
                     string strFile = "";
                     string strFolder = "";
                     string strStartFolder = "";
-                    string buf;
+                    //string buf;
 
                     int iFolderNum = (int)enmDirNum.Save;
 
