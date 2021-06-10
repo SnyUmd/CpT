@@ -67,8 +67,8 @@ namespace CpT
                 this.Background = new SolidColorBrush(Colors.Red);
                 this.Topmost = false;
                 this.MI_Topmost.Header = "最前面表示を無効にする";
-                /*this.WindowStyle = WindowStyle.None;
-                if (bl_size_change)
+                this.WindowStyle = WindowStyle.None;
+                /*if (bl_size_change)
                 {
                     this.Width -= 16;
                     this.Height -= 39;
@@ -79,6 +79,7 @@ namespace CpT
                 this.Background = new SolidColorBrush(Colors.Blue);
                 this.Topmost = true;
                 this.MI_Topmost.Header = "最前面表示を有効にする";
+                this.WindowStyle = WindowStyle.None;
                 /*this.WindowStyle = WindowStyle.SingleBorderWindow;
                 if (bl_size_change)
                 {
