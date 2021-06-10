@@ -13,7 +13,17 @@
         mc:Ignorable="d"
         Background="Red"
         Title="ViewImage" Height="450" Width="800">
+    
     <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem x:Name="MI_Copy" Header="コピー" Click="MI_Copy_Click"/>
+                <MenuItem x:Name="MI_Topmost" Header="最前面表示を無効にする" Click="MI_Topmost_Click"/>
+                <MenuItem x:Name="MI_Save" Header="画像保存" Click="MI_Save_Click"/>
+                <MenuItem x:Name="MI_AddCapture" Header="画像を追加する" Click="MI_AddCapture_Click"/>
+                <MenuItem x:Name="MI_Close" Header="閉じる" Click="MI_Close_Click"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1"/>
             <ColumnDefinition Width="*"/>
@@ -27,5 +37,13 @@
 
         <Image Grid.Row="1" Grid.Column="1" x:Name="img"/>
         <Canvas x:Name="Edge2" Background="Red"/>
+        <Button Content="" 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom"
+                Width="20"
+                Opacity="0.5"
+                Margin="0,0,2,2"/>
     </Grid>
 </Window>

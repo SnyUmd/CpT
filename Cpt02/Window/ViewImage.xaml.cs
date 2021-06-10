@@ -53,7 +53,7 @@ namespace CpT
             this.Left = p_start.X + offSetW;
             this.Top = p_start.Y + offSetH;
 
-            this.Topmost = false;
+            this.Topmost = true;
             if(this.Topmost)
                 FlontSw(this.Topmost, false);
             else
@@ -66,23 +66,25 @@ namespace CpT
             {
                 this.Background = new SolidColorBrush(Colors.Red);
                 this.Topmost = false;
-                this.WindowStyle = WindowStyle.None;
+                this.MI_Topmost.Header = "最前面表示を無効にする";
+                /*this.WindowStyle = WindowStyle.None;
                 if (bl_size_change)
                 {
                     this.Width -= 16;
                     this.Height -= 39;
-                }
+                }*/
             }
             else
             {
                 this.Background = new SolidColorBrush(Colors.Blue);
                 this.Topmost = true;
-                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.MI_Topmost.Header = "最前面表示を有効にする";
+                /*this.WindowStyle = WindowStyle.SingleBorderWindow;
                 if (bl_size_change)
                 {
                     this.Width += 16;
                     this.Height += 39;
-                }
+                }*/
             }
 
             this.Topmost = blFlont;
@@ -116,45 +118,7 @@ namespace CpT
                 if (e.Key == KeySts.Key_Copy)
                     Clipboard.SetData(DataFormats.Bitmap, bmpImage);
 
-                if (e.Key == KeySts.Key_Save)
-                {
-                    string strFile = "";
-                    string strFolder = "";
-                    string strStartFolder = "";
-                    //string buf;
-
-                    int iFolderNum = (int)enmDirNum.Save;
-
-                    Init.ReadConfigValue();
-
-                    //フォルダが存在しなければデスクトップにする。
-                    if (!common.clsFC.Folder_Fined(common.lst_strDir[(int)enmDirNum.Save]))
-                        iFolderNum = (int)enmDirNum.Desktop;
-
-                    strStartFolder = common.lst_strDir[iFolderNum];
-
-                    //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
-                    strFile = common.PngFileSave(strStartFolder);
-                    //キャンセルを押されたら処理中段
-                    if (strFile == "")
-                    {
-                        flgCtrl = false;
-                        return;
-                    }
-                    //フォルダを抽出
-                    strFolder = common.clsFC.Get_Folder_Name(strFile);
-                    //フォルダリストにセットconfigファイルにセット
-                    common.setConfigSaveDir(strFolder);
-
-                    try
-                    {
-                        bmpImage.Save(strFile, ImageFormat.Png);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("ファイルの保存に失敗しました。");
-                    }
-                }
+                if (e.Key == KeySts.Key_Save) ImageSave();
             }
             else
             {
@@ -166,19 +130,54 @@ namespace CpT
 
                 else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost, true);
 
-                else if (e.Key == KeySts.Key_NewApp)
-                {
-                    this.WindowState = WindowState.Minimized;
-                    string buf = common.lst_strDir[(int)enmDirNum.Applli] + @"CpT.exe";
-                    common.clsFC.Ex_App_Start(buf, false);
-                }
-#if DEB
-                else if (e.Key == KeySts.Key_Left) this.Width -= 0.5;
-                else if (e.Key == KeySts.Key_Up) this.Height -= 0.5;
-                else if (e.Key == KeySts.Key_Right) this.Width += 0.5;
-                else if (e.Key == KeySts.Key_Down) this.Height += 0.5;
-                else if (e.Key == Key.A) MessageBox.Show($"W = {this.Width}, H = {this.Height}");
-#endif
+                else if (e.Key == KeySts.Key_NewApp) AddCpT();
+            }
+        }
+
+        private void AddCpT()
+        {
+            this.WindowState = WindowState.Minimized;
+            string buf = common.lst_strDir[(int)enmDirNum.Applli] + @"CpT.exe";
+            common.clsFC.Ex_App_Start(buf, false);
+        }
+        //******************************************************************
+        private void ImageSave()
+        {
+            string strFile = "";
+            string strFolder = "";
+            string strStartFolder = "";
+            //string buf;
+
+            int iFolderNum = (int)enmDirNum.Save;
+
+            Init.ReadConfigValue();
+
+            //フォルダが存在しなければデスクトップにする。
+            if (!common.clsFC.Folder_Fined(common.lst_strDir[(int)enmDirNum.Save]))
+                iFolderNum = (int)enmDirNum.Desktop;
+
+            strStartFolder = common.lst_strDir[iFolderNum];
+
+            //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
+            strFile = common.PngFileSave(strStartFolder);
+            //キャンセルを押されたら処理中段
+            if (strFile == "")
+            {
+                flgCtrl = false;
+                return;
+            }
+            //フォルダを抽出
+            strFolder = common.clsFC.Get_Folder_Name(strFile);
+            //フォルダリストにセットconfigファイルにセット
+            common.setConfigSaveDir(strFolder);
+
+            try
+            {
+                bmpImage.Save(strFile, ImageFormat.Png);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ファイルの保存に失敗しました。");
             }
         }
 
@@ -186,6 +185,30 @@ namespace CpT
         private void MouseDclick(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void MI_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+        }
+
+        private void MI_Topmost_Click(object sender, RoutedEventArgs e)
+        {
+            FlontSw(!this.Topmost, true);
+        }
+
+        private void MI_Save_Click(object sender, RoutedEventArgs e)
+        {
+            ImageSave();
+        }
+
+        private void MI_AddCapture_Click(object sender, RoutedEventArgs e)
+        {
+            AddCpT();
+        }
+        private void MI_Close_Click(object sender, RoutedEventArgs e)
+        {
+            common.AppClose();
         }
 
 
