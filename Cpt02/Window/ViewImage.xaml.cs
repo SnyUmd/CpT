@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define DEB
+
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -51,14 +53,37 @@ namespace CpT
             this.Left = p_start.X + offSetW;
             this.Top = p_start.Y + offSetH;
 
+            this.Topmost = false;
+            if(this.Topmost)
+                FlontSw(this.Topmost, false);
+            else
+                FlontSw(this.Topmost, true);
         }
         //******************************************************************
-        private void FlontSw(bool blFlont)
+        private void FlontSw(bool blFlont, bool bl_size_change)
         {
             if (blFlont)
+            {
                 this.Background = new SolidColorBrush(Colors.Red);
+                this.Topmost = false;
+                this.WindowStyle = WindowStyle.None;
+                if (bl_size_change)
+                {
+                    this.Width -= 16;
+                    this.Height -= 39;
+                }
+            }
             else
+            {
                 this.Background = new SolidColorBrush(Colors.Blue);
+                this.Topmost = true;
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                if (bl_size_change)
+                {
+                    this.Width += 16;
+                    this.Height += 39;
+                }
+            }
 
             this.Topmost = blFlont;
 
@@ -139,7 +164,7 @@ namespace CpT
                 else if (e.Key == KeySts.Key_CtrlL || e.Key == KeySts.Key_CtrlR)
                     flgCtrl = true;
 
-                else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost);
+                else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost, true);
 
                 else if (e.Key == KeySts.Key_NewApp)
                 {
@@ -147,6 +172,13 @@ namespace CpT
                     string buf = common.lst_strDir[(int)enmDirNum.Applli] + @"CpT.exe";
                     common.clsFC.Ex_App_Start(buf, false);
                 }
+#if DEB
+                else if (e.Key == KeySts.Key_Left) this.Width -= 0.5;
+                else if (e.Key == KeySts.Key_Up) this.Height -= 0.5;
+                else if (e.Key == KeySts.Key_Right) this.Width += 0.5;
+                else if (e.Key == KeySts.Key_Down) this.Height += 0.5;
+                else if (e.Key == Key.A) MessageBox.Show($"W = {this.Width}, H = {this.Height}");
+#endif
             }
         }
 

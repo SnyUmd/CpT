@@ -9,9 +9,10 @@
         KeyDown="keyDown"
         KeyUp="keyUp"
         Closed="close"
+        ResizeMode="CanMinimize"    
         mc:Ignorable="d"
         Background="Red"
-        Title="ViewImage" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None">
+        Title="ViewImage" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1"/>
