@@ -2,7 +2,7 @@
 
 namespace CpT
 {
-    class KeySts
+    public static class KeySts
     {
         public const Key Key_ModeDrug = Key.Tab;
         public readonly static Key Key_ModeFream = Key.Tab;

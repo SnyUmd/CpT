@@ -17,11 +17,11 @@
     <Grid>
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem x:Name="MI_Copy" Header="コピー" Click="MI_Copy_Click"/>
-                <MenuItem x:Name="MI_Topmost" Header="最前面表示を無効にする" Click="MI_Topmost_Click"/>
-                <MenuItem x:Name="MI_Save" Header="画像保存" Click="MI_Save_Click"/>
-                <MenuItem x:Name="MI_AddCapture" Header="別画像をキャプチャする" Click="MI_AddCapture_Click"/>
-                <MenuItem x:Name="MI_Close" Header="閉じる" Click="MI_Close_Click"/>
+                <MenuItem x:Name="MI_Copy" Header="コピー [ctrl + c]" Click="MI_Copy_Click"/>
+                <MenuItem x:Name="MI_Topmost" Header="最前面表示を無効にする [space]" Click="MI_Topmost_Click"/>
+                <MenuItem x:Name="MI_Save" Header="画像保存 [ctrl + s]" Click="MI_Save_Click"/>
+                <MenuItem x:Name="MI_AddCapture" Header="別画像をキャプチャする [Enter]" Click="MI_AddCapture_Click"/>
+                <MenuItem x:Name="MI_Close" Header="閉じる [ESC]" Click="MI_Close_Click"/>
             </ContextMenu>
         </Grid.ContextMenu>
         <Grid.ColumnDefinitions>

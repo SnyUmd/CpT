@@ -25,7 +25,7 @@ namespace CpT
         public ViewImage(System.Windows.Point p_start, System.Windows.Point p_end)
         {
             InitializeComponent();
-            this.Topmost = true;
+            this.Topmost = true;//最前面表示
 
 
             //common.Bpm = common.GetBitmap(common.PointStart, common.PointEnd);
@@ -66,7 +66,7 @@ namespace CpT
             {
                 this.Background = new SolidColorBrush(Colors.Red);
                 this.Topmost = false;
-                this.MI_Topmost.Header = "最前面表示を無効にする";
+                this.MI_Topmost.Header = "最前面表示を無効にする [space]";
                 this.WindowStyle = WindowStyle.None;
                 /*if (bl_size_change)
                 {
@@ -78,7 +78,7 @@ namespace CpT
             {
                 this.Background = new SolidColorBrush(Colors.Blue);
                 this.Topmost = true;
-                this.MI_Topmost.Header = "最前面表示を有効にする";
+                this.MI_Topmost.Header = "最前面表示を有効にする [space]";
                 this.WindowStyle = WindowStyle.None;
                 /*this.WindowStyle = WindowStyle.SingleBorderWindow;
                 if (bl_size_change)
@@ -107,13 +107,34 @@ namespace CpT
         //******************************************************************
         private void keyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) flgCtrl = false;
+            //if (e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) flgCtrl = false;
         }
 
         //******************************************************************
         private void keyDown(object sender, KeyEventArgs e)
         {
-            if (flgCtrl)
+            var keyCtrl_L = Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down;
+            var keyCtrl_R = Keyboard.GetKeyStates(Key.RightCtrl) & KeyStates.Down;
+            //var keyCtrl = Keyboard.Modifiers == ModifierKeys.Shift;
+
+            if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
+            {
+                if (e.Key == KeySts.Key_Copy)
+                    Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+
+                if (e.Key == KeySts.Key_Save) ImageSave();
+            }
+            else
+            {
+                if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)// || e.Key == KeySts.Key_Close2)
+                    common.AppClose();
+
+                else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost, true);
+
+                else if (e.Key == KeySts.Key_NewApp) AddCpT();
+            }
+
+            /*if (flgCtrl)
             {
                 flgCtrl = false;
                 if (e.Key == KeySts.Key_Copy)
@@ -132,7 +153,7 @@ namespace CpT
                 else if (e.Key == KeySts.Key_AlwaysFlongSW) FlontSw(!this.Topmost, true);
 
                 else if (e.Key == KeySts.Key_NewApp) AddCpT();
-            }
+            }*/
         }
 
         private void AddCpT()
@@ -162,11 +183,8 @@ namespace CpT
             //ファイル保存ダイアログを表示して、ファイル名を取得(Dirリストフォルダ)
             strFile = common.PngFileSave(strStartFolder);
             //キャンセルを押されたら処理中段
-            if (strFile == "")
-            {
-                flgCtrl = false;
-                return;
-            }
+            if (strFile == "") return;
+
             //フォルダを抽出
             strFolder = common.clsFC.Get_Folder_Name(strFile);
             //フォルダリストにセットconfigファイルにセット

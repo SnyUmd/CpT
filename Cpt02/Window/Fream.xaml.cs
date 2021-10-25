@@ -139,6 +139,10 @@ namespace CpT
         //******************************************************************
         private void Fr_keyDown(object sender, KeyEventArgs e)
         {
+            var keyCtrl_L = Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down;
+            var keyCtrl_R = Keyboard.GetKeyStates(Key.RightCtrl) & KeyStates.Down;
+
+
             //if (common.blModeChange) return;
             if (e.Key == KeySts.Key_Capture) CaptureRun();
 
@@ -154,13 +158,25 @@ namespace CpT
             }
             else if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1) common.AppClose();
             else if (e.Key == KeySts.Key_DefaultMove) FreamPointDefault();
-
-            else if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
-            else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
-            else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Top -= 1;
-            else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Top += 1;
+            else
+            {
+                if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
+                {
+                    if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Width -= 1;
+                    else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Width += 1;
+                    else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Height -= 1;
+                    else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Height += 1;
+                }
+                else
+                {
+                    if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
+                    else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
+                    else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Top -= 1;
+                    else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Top += 1;
+                }
+            }
         }
-
+        　
         //******************************************************************
         private void FreamDoubleClick(object sender, MouseButtonEventArgs e)
         {
