@@ -43,7 +43,7 @@ namespace CpT
             common.DoEvents();
 
             MsgView(true);
-            Thread.Sleep(400);
+            Thread.Sleep(300);
             MsgView(false);
 
             this.Close();
@@ -54,12 +54,12 @@ namespace CpT
             double op = blopen ? 0 : 1;
             this.Opacity = op;
 
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 20; i++)
             {
-                op = blopen ? (op + 0.01) : (op - 0.01);
+                op = blopen ? (op + 0.05) : (op - 0.05);
                 this.Opacity = op;
                 common.DoEvents();
-                Thread.Sleep(2);
+                Thread.Sleep(1);
             }
         }
     }
