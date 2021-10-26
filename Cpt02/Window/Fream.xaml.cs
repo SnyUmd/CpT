@@ -143,8 +143,57 @@ namespace CpT
             var keyCtrl_R = Keyboard.GetKeyStates(Key.RightCtrl) & KeyStates.Down;
 
 
-            //if (common.blModeChange) return;
-            if (e.Key == KeySts.Key_Capture) CaptureRun();
+            const Key ky = Key.Enter;
+            //KeySts key_sts = new KeySts();
+
+            switch(e.Key)
+            {
+                case KeySts.Key_Capture:
+                    CaptureRun();
+                    break;
+
+                case KeySts.Key_ModeDrug:
+                    break;
+
+                case KeySts.Key_Close0:
+                case KeySts.Key_Close1:
+                    common.AppClose();
+                    break;
+
+                case KeySts.Key_DefaultMove:
+                    FreamPointDefault();
+                    break;
+
+                default:
+                    bool blLR = (e.Key == KeySts.Key_Left || e.Key == KeySts.Key_Right) ? true : false;
+                    bool blUD = (e.Key == KeySts.Key_Up || e.Key == KeySts.Key_Down) ? true : false;
+
+                    if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
+                    {
+                        this.Width = blLR ? (e.Key == KeySts.Key_Left)
+                                                    ? this.Width - 1
+                                                    : this.Width + 1
+                                            : this.Width;
+                        this.Height = blUD ? (e.Key == KeySts.Key_Up)
+                                                    ? this.Height - 1
+                                                    : this.Height + 1
+                                            : this.Height;
+                    }
+                    else
+                    {
+                        this.Left = blLR ? (e.Key == KeySts.Key_Left)
+                                                    ? this.Left - 1
+                                                    : this.Left + 1
+                                            : this.Left;
+                        this.Top = blUD ? (e.Key == KeySts.Key_Up)
+                                                    ? this.Top - 1
+                                                    : this.Top + 1
+                                            : this.Top;
+                    }
+                    break;
+            }
+
+            /*if (e.Key == KeySts.Key_Capture) CaptureRun();
 
             else if (e.Key == KeySts.Key_ModeDrug)
             {
@@ -160,23 +209,49 @@ namespace CpT
             else if (e.Key == KeySts.Key_DefaultMove) FreamPointDefault();
             else
             {
+                bool blLR = (e.Key == KeySts.Key_Left || e.Key == KeySts.Key_Right) ? true : false;
+                bool blUD = (e.Key == KeySts.Key_Up || e.Key == KeySts.Key_Down) ? true : false;
+
                 if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
                 {
-                    if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Width -= 1;
-                    else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Width += 1;
-                    else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Height -= 1;
-                    else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Height += 1;
+                    this.Width = blLR   ? (e.Key == KeySts.Key_Left)
+                                                ? this.Width - 1
+                                                : this.Width + 1 
+                                        : this.Width;
+                    this.Height = blUD ? (e.Key == KeySts.Key_Up)
+                                                ? this.Height - 1
+                                                : this.Height + 1
+                                        : this.Height;
                 }
                 else
                 {
-                    if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
-                    else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
-                    else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Top -= 1;
-                    else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Top += 1;
-                }
-            }
+                    this.Left = blLR ? (e.Key == KeySts.Key_Left)
+                                                ? this.Left - 1
+                                                : this.Left + 1
+                                        : this.Left;
+                    this.Top = blUD ? (e.Key == KeySts.Key_Up)
+                                                ? this.Top - 1
+                                                : this.Top + 1
+                                        : this.Top;
+                }*/
+
+                //if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
+                //{
+                //    if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Width -= 1;
+                //    else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Width += 1;
+                //    else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Height -= 1;
+                //    else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Height += 1;
+                //}
+                //else
+                //{
+                //    if (this.Left > 0 && e.Key == KeySts.Key_Left) this.Left -= 1;
+                //    else if (this.Left + this.Width < SystemParameters.WorkArea.Width && e.Key == KeySts.Key_Right) this.Left += 1;
+                //    else if (this.Top > 0 && e.Key == KeySts.Key_Up) this.Top -= 1;
+                //    else if (this.Top + this.Height < SystemParameters.WorkArea.Height && e.Key == KeySts.Key_Down) this.Top += 1;
+                //}
+            //}
         }
-        　
+
         //******************************************************************
         private void FreamDoubleClick(object sender, MouseButtonEventArgs e)
         {

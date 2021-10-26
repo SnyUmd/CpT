@@ -2,32 +2,32 @@
 
 namespace CpT
 {
-    public static class KeySts
+    public class KeySts
     {
         public const Key Key_ModeDrug = Key.Tab;
-        public readonly static Key Key_ModeFream = Key.Tab;
-        public readonly static Key Key_ModeSelectWindow = Key.Tab;
+        public const Key Key_ModeFream = Key.Tab;
+        public const Key Key_ModeSelectWindow = Key.Tab;
 
-        public static Key Key_Copy = Key.C;
-        public static Key Key_Save = Key.S;
+        public const Key Key_Copy = Key.C;
+        public const Key Key_Save = Key.S;
 
-        public static Key Key_Capture = Key.Enter;
-        public static Key Key_Close0 = Key.Escape;
-        public static Key Key_Close1 = Key.Delete;
+        public const Key Key_Capture = Key.Enter;
+        public const Key Key_Close0 = Key.Escape;
+        public const Key Key_Close1 = Key.Delete;
 
-        public static Key Key_CtrlL = Key.LeftCtrl;
-        public static Key Key_CtrlR = Key.RightCtrl;
+        public const Key Key_CtrlL = Key.LeftCtrl;
+        public const Key Key_CtrlR = Key.RightCtrl;
 
-        public static Key Key_DefaultMove = Key.Space;
+        public const Key Key_DefaultMove = Key.Space;
 
-        public static Key Key_Left = Key.Left;
-        public static Key Key_Right = Key.Right;
-        public static Key Key_Up = Key.Up;
-        public static Key Key_Down = Key.Down;
+        public const Key Key_Left = Key.Left;
+        public const Key Key_Right = Key.Right;
+        public const Key Key_Up = Key.Up;
+        public const Key Key_Down = Key.Down;
 
-        public static Key Key_AlwaysFlongSW = Key.Space;
+        public const Key Key_AlwaysFlongSW = Key.Space;
 
-        public static Key Key_NewApp = Key.Enter;
+        public const Key Key_NewApp = Key.Enter;
 
     }
 }
