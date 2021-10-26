@@ -22,6 +22,7 @@
                 <MenuItem x:Name="MI_Save" Header="画像保存 [ctrl + s]" Click="MI_Save_Click"/>
                 <MenuItem x:Name="MI_AddCapture" Header="別画像をキャプチャする [Enter]" Click="MI_AddCapture_Click"/>
                 <MenuItem x:Name="MI_Close" Header="閉じる [ESC]" Click="MI_Close_Click"/>
+                <MenuItem x:Name="MI_Debug" Header="Debug" Click="MI_Debug_Click"/>
             </ContextMenu>
         </Grid.ContextMenu>
         <Grid.ColumnDefinitions>

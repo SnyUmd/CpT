@@ -71,6 +71,9 @@
       <DependentUpon>Fream.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Init.cs" />
+    <Compile Include="Window\MsgB.xaml.cs">
+      <DependentUpon>MsgB.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window\ViewImage.xaml.cs">
       <DependentUpon>ViewImage.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
     </Compile>
     <Compile Include="Class\common.cs" />
     <Page Include="Window\Fream.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window\MsgB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

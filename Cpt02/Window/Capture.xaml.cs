@@ -160,5 +160,7 @@ namespace CpT
             Canvas.SetLeft(this.currentRect, x);
             Canvas.SetTop(this.currentRect, y);
         }
+
+
     }
 }

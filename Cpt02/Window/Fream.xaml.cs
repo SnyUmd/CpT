@@ -142,10 +142,6 @@ namespace CpT
             var keyCtrl_L = Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down;
             var keyCtrl_R = Keyboard.GetKeyStates(Key.RightCtrl) & KeyStates.Down;
 
-
-            const Key ky = Key.Enter;
-            //KeySts key_sts = new KeySts();
-
             switch(e.Key)
             {
                 case KeySts.Key_Capture:

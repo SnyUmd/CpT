@@ -16,7 +16,7 @@
         MouseUp="Mouse_Up"
         Visibility="Visible" 
         AllowsTransparency="True" WindowStyle="None">
-    
+
     <Grid>
         <Canvas x:Name="dCanvas" 
                 Background="Transparent" 

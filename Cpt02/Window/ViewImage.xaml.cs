@@ -230,6 +230,10 @@ namespace CpT
             common.AppClose();
         }
 
-
+        private void MI_Debug_Click(object sender, RoutedEventArgs e)
+        {
+            MsgB msgB = new MsgB("メッセージ", this.Left + this.Width / 2, this.Top + this.Height / 2);
+            msgB.Show();
+        }
     }
 }
