@@ -120,7 +120,7 @@ namespace CpT
             if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
             {
                 if (e.Key == KeySts.Key_Copy)
-                    Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+                    common.ClipB(bmpImage, this);
 
                 if (e.Key == KeySts.Key_Save) ImageSave();
             }
@@ -193,6 +193,9 @@ namespace CpT
             try
             {
                 bmpImage.Save(strFile, ImageFormat.Png);
+                common.MsgView("画像を保存しました", this);
+                //MsgB msgB = new MsgB("画像を保存しました", this.Left + this.Width / 2, this.Top + this.Height / 2);
+                //msgB.Show();
             }
             catch (Exception)
             {
@@ -208,7 +211,7 @@ namespace CpT
 
         private void MI_Copy_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetData(DataFormats.Bitmap, bmpImage);
+            common.ClipB(bmpImage, this);
         }
 
         private void MI_Topmost_Click(object sender, RoutedEventArgs e)
@@ -232,8 +235,7 @@ namespace CpT
 
         private void MI_Debug_Click(object sender, RoutedEventArgs e)
         {
-            MsgB msgB = new MsgB("メッセージ", this.Left + this.Width / 2, this.Top + this.Height / 2);
-            msgB.Show();
+            common.MsgView("Debug Message", this);
         }
     }
 }

@@ -426,6 +426,20 @@ namespace CpT
             return blResult;
         }
 
+        //public static void MsgView(string ms, double x, double y)
+        public static void MsgView(string ms, Window win)
+        {
+            MsgB msgB = new MsgB(ms, win.Left + win.Width / 2, win.Top + win.Height / 2);
+            msgB.Show();
+        }
+
+
+        public static void ClipB(Bitmap bi, Window win)
+        {
+            System.Windows.Clipboard.SetData(System.Windows.DataFormats.Bitmap, bi);
+            MsgView("画像をクリップボードに保管しました。", win);
+        }
+
     }
 
 }
