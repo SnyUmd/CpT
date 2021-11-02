@@ -31,7 +31,6 @@ namespace CpT
             common.ViewWindow(this, true);
 
             common.CpT_mode = (int)enm_mode.drag;
-
         }
 
         //******************************************************************
@@ -40,7 +39,6 @@ namespace CpT
             x = Screen.PrimaryScreen.Bounds.Width;
             y = Screen.PrimaryScreen.Bounds.Height;
         }
-
 
         //******************************************************************
         /// <summary>
@@ -52,41 +50,20 @@ namespace CpT
         private void Key_down(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == KeySts.Key_Close0 || e.Key == KeySts.Key_Close1)
-                    common.AppClose();
+                common.AppClose();
 
-            if(!common.flgDrug && e.Key == KeySts.Key_ModeFream)
+            if (!common.flgDrug && e.Key == KeySts.Key_ModeFream)
             {
                 common.CpT_mode = (int)enm_mode.fream;
                 common.ViewWindow(this, false);
                 this.Visibility = Visibility.Hidden;
-                //this.Width = 10;
-                //this.Height = 10;
-
-                Init.ReadConfigValue();
-
-                System.Drawing.Point dp = new System.Drawing.Point();
-                dp.X = common.DicFreamLocation[common.DicKey_Left];
-                dp.Y = common.DicFreamLocation[common.DicKey_Top];
 
                 double left, top, width, height;
 
-                if (common.CheckArea(dp))
-                {
-                    left = common.DicFreamLocation[common.DicKey_Left];
-                    top = common.DicFreamLocation[common.DicKey_Top];
-                    width = common.DicFreamLocation[common.DicKey_Width];
-                    height = common.DicFreamLocation[common.DicKey_Height];
-                }
-                else
-                {
-                    dp = new System.Drawing.Point();
-                    dp = common.GetMousePoint();
-                    left = dp.X - 50;
-                    top = dp.Y - 50;
-                    width = common.DicFreamLocation[common.DicKey_Width];
-                    height = common.DicFreamLocation[common.DicKey_Height];
-                    common.setConfigFreamLocation(this);
-                }
+                left = common.DicFreamLocation[common.DicKey_Left];
+                top = common.DicFreamLocation[common.DicKey_Top];
+                width = common.DicFreamLocation[common.DicKey_Width];
+                height = common.DicFreamLocation[common.DicKey_Height];
 
                 common.winDrug = this;
                 Fream Fr = new Fream(left, top, width, height);
@@ -103,7 +80,7 @@ namespace CpT
         //******************************************************************
         private void Mouse_down(object sender, MouseButtonEventArgs e)
         {
-            common.Pdown =  Mouse.GetPosition(this);
+            common.Pdown = Mouse.GetPosition(this);
             //common.Pdown = this.PointToScreen(Mouse.GetPosition(this));
 
             common.flgDrug = true;
@@ -111,7 +88,7 @@ namespace CpT
 
             // 描画オブジェクトの生成
             this.currentRect = new System.Windows.Shapes.Rectangle
-            { 
+            {
                 Stroke = System.Windows.Media.Brushes.Red,
                 StrokeThickness = 1
             };
@@ -121,8 +98,6 @@ namespace CpT
 
             // オブジェクトをキャンバスに追加
             this.dCanvas.Children.Add(this.currentRect);
-
-
         }
 
         //******************************************************************
@@ -162,8 +137,6 @@ namespace CpT
             common.winDrug.Width = 10;
             common.winDrug.Height = 10;
 
-            
-
             //Ctrlボタン状態を取得
             var keyCtrl_L = Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down;
             var keyCtrl_R = Keyboard.GetKeyStates(Key.RightCtrl) & KeyStates.Down;
@@ -186,7 +159,6 @@ namespace CpT
             }
         }
 
-
         //******************************************************************
         private void CanvasMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -196,7 +168,6 @@ namespace CpT
 
             pMouse = Mouse.GetPosition(dCanvas);
             //pMouse = this.PointToScreen(Mouse.GetPosition(dCanvas));
-
 
             double x = Math.Min(pMouse.X, common.Pdown.X);
             double y = Math.Min(pMouse.Y, common.Pdown.Y);
@@ -208,11 +179,9 @@ namespace CpT
             this.currentRect.Height = height;
 
             Canvas cnb = new Canvas();
-            
+
             Canvas.SetLeft(this.currentRect, x);
             Canvas.SetTop(this.currentRect, y);
         }
-
-
     }
 }

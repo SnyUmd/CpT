@@ -280,10 +280,8 @@ namespace CpT
             /*
             this.Left = Init.left;
             this.Top = Init.top;
-
             this.Width = Init.width;
             this.Height = Init.height;
-
             */
 
             System.Drawing.Point dp = new System.Drawing.Point();
@@ -293,7 +291,6 @@ namespace CpT
             this.Width = common.DicFreamLocation[common.DicKey_Width];
             this.Height = common.DicFreamLocation[common.DicKey_Height];
             common.setConfigFreamLocation(this);
-
         }
 
         private void BtnRunClick(object sender, RoutedEventArgs e)
