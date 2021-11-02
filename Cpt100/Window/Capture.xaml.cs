@@ -64,10 +64,29 @@ namespace CpT
 
                 Init.ReadConfigValue();
 
-                double left = common.DicFreamLocation[common.DicKey_Left];
-                double top = common.DicFreamLocation[common.DicKey_Top];
-                double width = common.DicFreamLocation[common.DicKey_Width];
-                double height = common.DicFreamLocation[common.DicKey_Height];
+                System.Drawing.Point dp = new System.Drawing.Point();
+                dp.X = common.DicFreamLocation[common.DicKey_Left];
+                dp.Y = common.DicFreamLocation[common.DicKey_Top];
+
+                double left, top, width, height;
+
+                if (common.CheckArea(dp))
+                {
+                    left = common.DicFreamLocation[common.DicKey_Left];
+                    top = common.DicFreamLocation[common.DicKey_Top];
+                    width = common.DicFreamLocation[common.DicKey_Width];
+                    height = common.DicFreamLocation[common.DicKey_Height];
+                }
+                else
+                {
+                    dp = new System.Drawing.Point();
+                    dp = common.GetMousePoint();
+                    left = dp.X - 50;
+                    top = dp.Y - 50;
+                    width = common.DicFreamLocation[common.DicKey_Width];
+                    height = common.DicFreamLocation[common.DicKey_Height];
+                    common.setConfigFreamLocation(this);
+                }
 
                 common.winDrug = this;
                 Fream Fr = new Fream(left, top, width, height);
