@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpT", "CpT.csproj", "{824FAC5B-CBD4-4695-ACF2-F3D043F6BDEC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A334992-62F5-4412-99E1-A070D84740B0} = {4A334992-62F5-4412-99E1-A070D84740B0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ctrl_Dll", "..\..\Css_Ctrl\Ctrl_Dll\Ctrl_Dll.csproj", "{4A334992-62F5-4412-99E1-A070D84740B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{824FAC5B-CBD4-4695-ACF2-F3D043F6BDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824FAC5B-CBD4-4695-ACF2-F3D043F6BDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824FAC5B-CBD4-4695-ACF2-F3D043F6BDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824FAC5B-CBD4-4695-ACF2-F3D043F6BDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A334992-62F5-4412-99E1-A070D84740B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A334992-62F5-4412-99E1-A070D84740B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A334992-62F5-4412-99E1-A070D84740B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A334992-62F5-4412-99E1-A070D84740B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F497954-3857-4E80-A421-A37D77FDA01F}
+	EndGlobalSection
+EndGlobal

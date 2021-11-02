@@ -1,0 +1,17 @@
+﻿<Window x:Class="CpT.MsgB"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CpT"
+        mc:Ignorable="d"
+        Opacity="0"
+        Loaded="MsgBoxLoaded"
+        Activated="MsgBoxActivated"
+        Title="MsgB" Height="50" Width="250" WindowStyle="None"  AllowsTransparency="True" >
+    <Grid Background="#FF999696">
+
+        <Label x:Name="msgVal" Width="250" Content="test test" FontSize="12" FontFamily="Meiryo" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1,8" Grid.RowSpan="2" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+
+    </Grid>
+</Window>

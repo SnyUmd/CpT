@@ -1,0 +1,29 @@
+﻿<Window x:Class="CpT.Capture"
+        x:Name="Window_drug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CpT"
+        WindowStartupLocation="CenterScreen"
+        Background="Black"
+        Opacity="0"
+        Cursor="Cross"
+        mc:Ignorable="d"
+        Title="Capture" Height="50" Width="250"
+        KeyDown="Key_down"
+        MouseDown="Mouse_down"
+        MouseUp="Mouse_Up"
+        Visibility="Visible" 
+        AllowsTransparency="True" WindowStyle="None">
+
+    <Grid>
+        <Canvas x:Name="dCanvas" 
+                Background="Transparent" 
+                MouseMove="CanvasMouseMove"/>
+
+    </Grid>
+</Window>
+
+<!--WindowState="Maximized"
+        Topmost="True"-->
