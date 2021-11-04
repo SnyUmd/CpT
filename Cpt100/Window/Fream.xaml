@@ -32,7 +32,8 @@
             <Button Grid.Column="1" 
                     x:Name="BtnRun" 
                     Margin="0, 0, 5, 5" 
-                    Content="capture" Click="BtnRunClick" Height="20" Width="60" />
+                    Content="capture" Click="BtnRunClick" Height="20" Width="60" 
+                    Cursor="Hand"/>
         </Grid>
         
 

@@ -180,30 +180,30 @@ namespace CpT
                     bool blLR = (e.Key == KeySts.Key_Left || e.Key == KeySts.Key_Right) ? true : false;
                     bool blUD = (e.Key == KeySts.Key_Up || e.Key == KeySts.Key_Down) ? true : false;
 
-                    int offS = 0;
-                    offS = (keyShift_L == KeyStates.Down || keyShift_R == KeyStates.Down) ? 4 : 0;
+                    int StepNum = 0;
+                    StepNum = (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down) ? 1  : 5;
 
-                    if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
+                    if (keyShift_L == KeyStates.Down || keyShift_R == KeyStates.Down)
                     {
                         this.Width = blLR ? (e.Key == KeySts.Key_Left)
-                                                    ? this.Width - 1 - offS
-                                                    : this.Width + 1 + offS
+                                                    ? this.Width - StepNum
+                                                    : this.Width + StepNum
                                           : this.Width;
 
                         this.Height = blUD ? (e.Key == KeySts.Key_Up)
-                                                    ? this.Height - 1 - offS
-                                                    : this.Height + 1 + offS
+                                                    ? this.Height - StepNum
+                                                    : this.Height + StepNum
                                            : this.Height;
                     }
                     else
                     {
                         this.Left = blLR ? (e.Key == KeySts.Key_Left)
-                                                    ? this.Left - 1 - offS
-                                                    : this.Left + 1 + offS
+                                                    ? this.Left - StepNum
+                                                    : this.Left + StepNum
                                             : this.Left;
                         this.Top = blUD ? (e.Key == KeySts.Key_Up) 
-                                                    ? this.Top - 1 - offS
-                                                    : this.Top + 1 + offS
+                                                    ? this.Top - StepNum
+                                                    : this.Top + StepNum
                                             : this.Top;
                     }
                     break;
@@ -300,5 +300,6 @@ namespace CpT
         {
             CaptureRun();
         }
+
     }
 }
