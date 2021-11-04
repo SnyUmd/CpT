@@ -68,7 +68,7 @@ namespace CpT {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CpT103;component/window/capture.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CpT1050;component/window/capture.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Window\Capture.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

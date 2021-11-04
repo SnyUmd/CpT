@@ -141,7 +141,7 @@ namespace CpT
             var keyCtrl_L = Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down;
             var keyCtrl_R = Keyboard.GetKeyStates(Key.RightCtrl) & KeyStates.Down;
 
-            if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
+            if (keyCtrl_L != KeyStates.Down && keyCtrl_R != KeyStates.Down)
             {
                 double left = common.PointStart.X;
                 double top = common.PointStart.Y;
