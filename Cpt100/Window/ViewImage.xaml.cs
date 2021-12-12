@@ -16,7 +16,6 @@ namespace CpT
     /// </summary>
     public partial class ViewImage : Window
     {
-        bool flgCtrl = false;
         //string NewLine = "\r\n";
 
         Bitmap bmpImage;

@@ -181,7 +181,7 @@ namespace CpT
                     bool blUD = (e.Key == KeySts.Key_Up || e.Key == KeySts.Key_Down) ? true : false;
 
                     int StepNum = 0;
-                    StepNum = (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down) ? 1  : 5;
+                    StepNum = (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down) ? 5: 1;
 
                     if (keyShift_L == KeyStates.Down || keyShift_R == KeyStates.Down)
                     {
