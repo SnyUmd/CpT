@@ -434,7 +434,7 @@ namespace CpT
         }
 
 
-        public static void ClipB(Bitmap bi, Window win)
+        public static void ClipBoad(Bitmap bi, Window win)
         {
             System.Windows.Clipboard.SetData(System.Windows.DataFormats.Bitmap, bi);
             MsgView("画像をクリップボードに保管しました。", win);

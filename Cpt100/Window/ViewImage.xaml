@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CpT"
         MouseLeftButtonDown="mouseL_Bdown"
+        Loaded="ViewWindow_Loaded"
         MouseDoubleClick="MouseDclick"
         KeyDown="keyDown"
         KeyUp="keyUp"

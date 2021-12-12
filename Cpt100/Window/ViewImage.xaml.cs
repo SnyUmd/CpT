@@ -58,7 +58,9 @@ namespace CpT
                 FlontSw(this.Topmost, false);
             else
                 FlontSw(this.Topmost, true);
+
         }
+
         //******************************************************************
         private void FlontSw(bool blFlont, bool bl_size_change)
         {
@@ -120,7 +122,7 @@ namespace CpT
             if (keyCtrl_L == KeyStates.Down || keyCtrl_R == KeyStates.Down)
             {
                 if (e.Key == KeySts.Key_Copy)
-                    common.ClipB(bmpImage, this);
+                    common.ClipBoad(bmpImage, this);
 
                 if (e.Key == KeySts.Key_Save) ImageSave();
             }
@@ -209,33 +211,45 @@ namespace CpT
             this.WindowState = WindowState.Minimized;
         }
 
+        //******************************************************************
         private void MI_Copy_Click(object sender, RoutedEventArgs e)
         {
-            common.ClipB(bmpImage, this);
+            common.ClipBoad(bmpImage, this);
         }
 
+        //******************************************************************
         private void MI_Topmost_Click(object sender, RoutedEventArgs e)
         {
             FlontSw(!this.Topmost, true);
         }
 
+        //******************************************************************
         private void MI_Save_Click(object sender, RoutedEventArgs e)
         {
             ImageSave();
         }
 
+        //******************************************************************
         private void MI_AddCapture_Click(object sender, RoutedEventArgs e)
         {
             AddCpT();
         }
+        //******************************************************************
         private void MI_Close_Click(object sender, RoutedEventArgs e)
         {
             common.AppClose();
         }
 
+        //******************************************************************
         private void MI_Debug_Click(object sender, RoutedEventArgs e)
         {
             common.MsgView("Debug Message", this);
+        }
+
+        //******************************************************************
+        private void ViewWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            common.ClipBoad(bmpImage, this);
         }
     }
 }
